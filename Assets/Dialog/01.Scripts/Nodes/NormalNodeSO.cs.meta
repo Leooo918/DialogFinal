@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 030378e15185f7041a92926a73b061f1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - animationGruop: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
+  - defaultPlayerActor: {fileID: 11400000, guid: 096a0d56132461f4ba048bdc974149d7, type: 2}
+  - reader: {instanceID: 0}
+  - nextNode: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

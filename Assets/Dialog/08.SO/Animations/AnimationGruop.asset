@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78aceb6164d06f24f91337e8d8473c38, type: 3}
+  m_Name: AnimationGruop
+  m_EditorClassIdentifier: 
+  animations:
+  - {fileID: 11400000, guid: d69731329f82be8439001829aeea30dc, type: 2}

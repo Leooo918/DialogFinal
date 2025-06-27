@@ -1,0 +1,208 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5305756745479392934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030378e15185f7041a92926a73b061f1, type: 3}
+  m_Name: NormalNodeSO
+  m_EditorClassIdentifier: 
+  guid: c54c0b0adc5b51b47a2bf5dd4fa6e4d5
+  position: {x: 417.5, y: 285.00006}
+  isFirstNode: 0
+  startDialogEventSO: []
+  startDialogEvent: []
+  endDialogEventSO: []
+  endDialogEvent: []
+  animationGruop: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
+  reader: {fileID: 11400000, guid: 24df2bcdafcd9dc429b1429e3e0a8fbc, type: 2}
+  contents: "<size>\uB07C\uC58F\uD638\uC6B0~!!!</size>"
+  parsedContents: "\uB07C\uC58F\uD638\uC6B0~!!!"
+  contentTagAnimations:
+  - rid: 1847601113136890041
+  nextNode: {fileID: 5795038432710794112}
+  references:
+    version: 2
+    RefIds:
+    - rid: 1847601113136890041
+      type: {class: SizeAnimation, ns: Dialog.Animation, asm: Assembly-CSharp}
+      data:
+        startIndex: 0
+        endIndex: 8
+        tag: size
+        duration: 0.2
+        amplitude: -1
+--- !u!114 &-5035902386080910420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030378e15185f7041a92926a73b061f1, type: 3}
+  m_Name: NormalNodeSO
+  m_EditorClassIdentifier: 
+  guid: b1b7e6823c47ec241ad0d13d795dca5c
+  position: {x: 956, y: 204.5}
+  isFirstNode: 0
+  startDialogEventSO: []
+  startDialogEvent: []
+  endDialogEventSO: []
+  endDialogEvent: []
+  animationGruop: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
+  reader: {fileID: 11400000, guid: 24df2bcdafcd9dc429b1429e3e0a8fbc, type: 2}
+  contents: "<size>\uB07C\uC58F\uD638\uC6B0!"
+  parsedContents: "\uB07C\uC58F\uD638\uC6B0!"
+  contentTagAnimations:
+  - rid: 5973989233040556110
+  nextNode: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 5973989233040556110
+      type: {class: SizeAnimation, ns: Dialog.Animation, asm: Assembly-CSharp}
+      data:
+        startIndex: 0
+        endIndex: 5
+        tag: size
+        duration: 0.2
+        amplitude: -1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5428f57e6e1463b4b8d0636e183f2213, type: 3}
+  m_Name: IngameTest
+  m_EditorClassIdentifier: 
+  animGroup: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
+  defaultPlayerActor: {fileID: 11400000, guid: 096a0d56132461f4ba048bdc974149d7, type: 2}
+  nodes:
+  - {fileID: 8631172013708795590}
+  - {fileID: -5305756745479392934}
+  - {fileID: 5795038432710794112}
+  - {fileID: -5035902386080910420}
+  - {fileID: 6608401330255238676}
+--- !u!114 &5795038432710794112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf12593a4a5d8247bdea87308ca2eb6, type: 3}
+  m_Name: OptionNodeSO
+  m_EditorClassIdentifier: 
+  guid: 286aff04fca198e409d6e697f58be29c
+  position: {x: 715.5, y: 285}
+  isFirstNode: 0
+  startDialogEventSO: []
+  startDialogEvent: []
+  endDialogEventSO: []
+  endDialogEvent: []
+  options:
+  - option: "\uB07C\uC58F\uD638\uC6B0?!"
+    optionTxt: "\uB07C\uC58F\uD638\uC6B0?!"
+    startDialogEventSO: []
+    startDialogEvent: []
+    endDialogEventSO: []
+    endDialogEvent: []
+    nextNode: {fileID: -5035902386080910420}
+  - option: "\uBC0D\uB07C\uC58F\uD638\uC6B0!!!"
+    optionTxt: "\uBC0D\uB07C\uC58F\uD638\uC6B0!!!"
+    startDialogEventSO: []
+    startDialogEvent: []
+    endDialogEventSO: []
+    endDialogEvent: []
+    nextNode: {fileID: 6608401330255238676}
+  optionPf: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &6608401330255238676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030378e15185f7041a92926a73b061f1, type: 3}
+  m_Name: NormalNodeSO
+  m_EditorClassIdentifier: 
+  guid: 49e8384a0d7ab3841b03e324919123ef
+  position: {x: 956, y: 362.5}
+  isFirstNode: 0
+  startDialogEventSO: []
+  startDialogEvent: []
+  endDialogEventSO: []
+  endDialogEvent: []
+  animationGruop: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
+  reader: {fileID: 11400000, guid: 24df2bcdafcd9dc429b1429e3e0a8fbc, type: 2}
+  contents: "<size>\uBC0D\uB07C\uC58F\uD638\uC6B0!"
+  parsedContents: "\uBC0D\uB07C\uC58F\uD638\uC6B0!"
+  contentTagAnimations:
+  - rid: 5973989233040556112
+  nextNode: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 5973989233040556112
+      type: {class: SizeAnimation, ns: Dialog.Animation, asm: Assembly-CSharp}
+      data:
+        startIndex: 0
+        endIndex: 6
+        tag: size
+        duration: 0.2
+        amplitude: -1
+--- !u!114 &8631172013708795590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030378e15185f7041a92926a73b061f1, type: 3}
+  m_Name: NormalNodeSO
+  m_EditorClassIdentifier: 
+  guid: 7a9791b3d20b24441bff8e471ae66722
+  position: {x: 186, y: 285}
+  isFirstNode: 1
+  startDialogEventSO: []
+  startDialogEvent: []
+  endDialogEventSO: []
+  endDialogEvent: []
+  animationGruop: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
+  reader: {fileID: 11400000, guid: 24df2bcdafcd9dc429b1429e3e0a8fbc, type: 2}
+  contents: "<size>\uBC0D\uB07C\uC58F\uD638\uC6B0"
+  parsedContents: "\uBC0D\uB07C\uC58F\uD638\uC6B0"
+  contentTagAnimations:
+  - rid: 1847601150636589141
+  nextNode: {fileID: -5305756745479392934}
+  references:
+    version: 2
+    RefIds:
+    - rid: 1847601150636589141
+      type: {class: SizeAnimation, ns: Dialog.Animation, asm: Assembly-CSharp}
+      data:
+        startIndex: 0
+        endIndex: 5
+        tag: size
+        duration: 0.2
+        amplitude: -1

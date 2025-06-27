@@ -1,0 +1,16 @@
+using Cafe;
+using System;
+using UnityEngine;
+
+namespace Dialog
+{
+    public class PlayerInputEvent : DialogEvent
+    {
+        public bool isEnable;
+
+        public override void PlayEvent(DialogPlayer dialogPlayer, Actor actor)
+        {
+            isCompleteEvent = true;
+        }
+    }
+}
