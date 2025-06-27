@@ -310,7 +310,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      aris_noweapon_default_Eye_Close_01_0: 8220144336506593544
+      aris_noweapon_default_Eye_Close_01_1: 3220919566531790681
+      aris_noweapon_default_Eye_Close_01_2: -5218419771700631238
+      aris_noweapon_default_Eye_Close_01_3: -2556809714799378736
+      aris_noweapon_default_Eye_Close_01_4: 8399902808880351748
+      aris_noweapon_default_Eye_Close_01_5: 5324861725770867669
+      aris_noweapon_default_Eye_Close_01_6: -5552000224736608434
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -310,7 +310,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      aris_noweapon_default_01_0: -6353604823892977376
+      aris_noweapon_default_01_1: 9207831135583770561
+      aris_noweapon_default_01_2: -1144668820413407825
+      aris_noweapon_default_01_3: -5448431423836684022
+      aris_noweapon_default_01_4: 5111618384894213615
+      aris_noweapon_default_01_5: 425699368518646348
+      aris_noweapon_default_01_6: -9098544722628159375
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
