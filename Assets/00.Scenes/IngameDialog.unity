@@ -1057,6 +1057,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogOption
       objectReference: {fileID: 0}
+    - target: {fileID: 4145679198063630145, guid: 077558b51110c734fb1c0f83459e97b8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6015991095862044701, guid: 077558b51110c734fb1c0f83459e97b8, type: 3}
       propertyPath: m_Enabled
       value: 0

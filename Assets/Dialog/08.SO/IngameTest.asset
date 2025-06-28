@@ -113,9 +113,11 @@ MonoBehaviour:
   startDialogEvent: []
   endDialogEventSO: []
   endDialogEvent: []
+  animationGroup: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
   options:
   - option: "\uB07C\uC58F\uD638\uC6B0?!"
     optionTxt: "\uB07C\uC58F\uD638\uC6B0?!"
+    optionTagAnimations: []
     startDialogEventSO: []
     startDialogEvent: []
     endDialogEventSO: []
@@ -123,12 +125,13 @@ MonoBehaviour:
     nextNode: {fileID: -5035902386080910420}
   - option: "\uBC0D\uB07C\uC58F\uD638\uC6B0!!!"
     optionTxt: "\uBC0D\uB07C\uC58F\uD638\uC6B0!!!"
+    optionTagAnimations: []
     startDialogEventSO: []
     startDialogEvent: []
     endDialogEventSO: []
     endDialogEvent: []
     nextNode: {fileID: 6608401330255238676}
-  optionPf: {fileID: 0}
+  optionPrefab: {fileID: -2199068703474868929, guid: f96be568de8eb164d8af3c30b3c615e7, type: 3}
   references:
     version: 2
     RefIds: []

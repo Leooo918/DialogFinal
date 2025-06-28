@@ -27,27 +27,10 @@ namespace Dialog.Animation
     }
 
     [Serializable]
-    public struct MeshData : System.IEquatable<MeshData>
+    public struct MeshData
     {
         public Vector3[] positions;
         public Color32[] colors;
-
-        public bool Equals(MeshData other)
-        {
-            for (int i = 0; i < positions.Length; i++)
-            {
-                if (positions[i] != other.positions[i])
-                    return false;
-            }
-
-            for (int i = 0; i < colors.Length; i++)
-            {
-                if (!colors[i].Equals(other.colors[i]))
-                    return false;
-            }
-
-            return true;
-        }
 
         public override string ToString()
         {

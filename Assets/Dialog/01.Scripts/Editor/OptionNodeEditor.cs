@@ -9,8 +9,9 @@ namespace Dialog
     [CustomEditor(typeof(OptionNodeSO))]
     public class OptionNodeEditor : Editor
     {
+        public SerializedProperty _animationGroup;
+        public SerializedProperty _optionPrefab;
         public SerializedProperty _options;
-        public SerializedProperty _optionPf;
         private GUIStyle _textAreaStyle;
         public ReorderableList optionList;
 
@@ -27,7 +28,8 @@ namespace Dialog
                 serializedObject,
                 serializedObject.FindProperty("options"),
                 true, true, true, true);
-            _optionPf = serializedObject.FindProperty("optionPf");
+            _animationGroup = serializedObject.FindProperty("animationGroup");
+            _optionPrefab = serializedObject.FindProperty("optionPrefab");
             _options = serializedObject.FindProperty("options");
 
             //15 + 5 + 70 + 5 + 15 + 5
@@ -71,8 +73,9 @@ namespace Dialog
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
+            EditorGUILayout.PropertyField(_animationGroup);
             optionList.DoLayoutList();
-            EditorGUILayout.PropertyField(_optionPf);
+            EditorGUILayout.PropertyField(_optionPrefab);
             serializedObject.ApplyModifiedProperties();
         }
 

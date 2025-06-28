@@ -8,7 +8,7 @@ namespace Dialog
 {
     public class InGameDialogPlayer : DialogPlayer
     {
-        [SerializeField] private DialogOption _option;
+        [SerializeField] private IngameDialogOption _option;
 
         private Actor _currentActor;
         private OptionNodeSO _optionTalk;

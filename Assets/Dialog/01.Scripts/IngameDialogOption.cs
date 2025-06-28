@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 namespace Dialog
 {
-    public class DialogOption : MonoBehaviour
+    public class IngameDialogOption : MonoBehaviour
     {
         private List<DialogOptionObject> _optionList = new();
         private bool _isCheckingOption;

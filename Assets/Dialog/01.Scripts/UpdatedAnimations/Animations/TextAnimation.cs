@@ -6,7 +6,7 @@ namespace Dialog.Animation
     [Serializable]
     public abstract class TextAnimation
     {
-        [ReadOnly] public Guid textGuid;
+        public Guid textGuid;
         [ReadOnly] public int startIndex;
         [ReadOnly] public int endIndex;
         public int AnimationLength => (endIndex - startIndex);
