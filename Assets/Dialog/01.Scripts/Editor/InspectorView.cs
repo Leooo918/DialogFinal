@@ -7,11 +7,9 @@ using UnityEngine.UIElements;
 
 namespace Dialog
 {
-    public class InspectorView : VisualElement
+    [UxmlElement]
+    public partial class InspectorView : VisualElement
     {
-        public new class UxmlFactory : UxmlFactory<InspectorView, VisualElement.UxmlTraits> { }
-        public new class UxmlTraits : VisualElement.UxmlTraits { }
-
         private UnityEditor.Editor editor;
         private UnityEditor.Editor conditionEditor;
 

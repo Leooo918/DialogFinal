@@ -94,6 +94,31 @@ MonoBehaviour:
   - {fileID: 5795038432710794112}
   - {fileID: -5035902386080910420}
   - {fileID: 6608401330255238676}
+  - {fileID: 1381941212097720953}
+--- !u!114 &1381941212097720953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23aee5184e8159f4e9ee55e8ab227ed5, type: 3}
+  m_Name: BranchNodeSO
+  m_EditorClassIdentifier: 
+  guid: 56c54df13eda3474f81818fd78fc44ce
+  position: {x: 0, y: 0}
+  isFirstNode: 0
+  startDialogEventSO: []
+  startDialogEvent: []
+  endDialogEventSO: []
+  endDialogEvent: []
+  condition: {fileID: 0}
+  nextNodes: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &5795038432710794112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,7 +210,7 @@ MonoBehaviour:
   m_Name: NormalNodeSO
   m_EditorClassIdentifier: 
   guid: 7a9791b3d20b24441bff8e471ae66722
-  position: {x: 186, y: 285}
+  position: {x: 185.5, y: 285}
   isFirstNode: 1
   startDialogEventSO: []
   startDialogEvent: []

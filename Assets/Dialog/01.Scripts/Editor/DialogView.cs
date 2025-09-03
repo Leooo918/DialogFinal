@@ -9,11 +9,9 @@ using UnityEngine.UIElements;
 
 namespace Dialog
 {
-    public class DialogView : GraphView
+    [UxmlElement]
+    public partial class DialogView : GraphView
     {
-        public new class UxmlFactory : UxmlFactory<DialogView, GraphView.UxmlTraits> { }
-        public new class UxmlTraits : GraphView.UxmlTraits { }
-
         public Action<NodeView> OnNodeSelected;
         private DialogSO _dialog;
 
