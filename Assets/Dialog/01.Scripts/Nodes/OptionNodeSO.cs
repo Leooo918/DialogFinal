@@ -66,13 +66,6 @@ namespace Dialog
         [SerializeReference] public List<TextAnimation> optionTagAnimations = new();
 
 
-        public List<DialogEventSO> startDialogEventSO;
-        [SerializeReference] public List<DialogEvent> startDialogEvent = new();
-
-        [Space]
-        public List<DialogEventSO> endDialogEventSO;
-        [SerializeReference] public List<DialogEvent> endDialogEvent = new();
-
         [HideInInspector]public NodeSO nextNode;
 
         public Option()
@@ -85,48 +78,6 @@ namespace Dialog
         {
            optionTxt = option;
            optionTagAnimations = TagParser.ParseAnimation(ref optionTxt, animationGroup.animations);
-
-            startDialogEventSO.ForEach(eventSO =>
-            {
-                if (eventSO == null) return;
-
-                bool hasDialogEvent = startDialogEvent.Any(dialogEvent => dialogEvent.GetType() == eventSO.Type);
-                if (hasDialogEvent) return;
-
-                if (eventSO.GetDialogEvent(out DialogEvent dialogEvent))
-                    this.startDialogEvent.Add(dialogEvent);
-            });
-
-            for (int i = 0; i < startDialogEvent.Count; i++)
-            {
-                DialogEventSO eventSO = startDialogEventSO.Find(so => so.Type == startDialogEvent[i].GetType());
-
-                if (eventSO == null)
-                {
-                    startDialogEvent.RemoveAt(i--);
-                }
-            }
-
-            endDialogEventSO.ForEach(eventSO =>
-            {
-                if (eventSO == null) return;
-
-                bool hasDialogEvent = endDialogEvent.Any(dialogEvent => dialogEvent.GetType() == eventSO.Type);
-                if (hasDialogEvent) return;
-
-                if (eventSO.GetDialogEvent(out DialogEvent dialogEvent))
-                    this.endDialogEvent.Add(dialogEvent);
-            });
-
-            for (int i = 0; i < endDialogEvent.Count; i++)
-            {
-                DialogEventSO eventSO = endDialogEventSO.Find(so => so.Type == endDialogEvent[i].GetType());
-
-                if (eventSO == null)
-                {
-                    endDialogEvent.RemoveAt(i--);
-                }
-            }
         }
     }
 }

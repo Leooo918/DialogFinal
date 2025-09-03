@@ -37,9 +37,9 @@ namespace Dialog
             }
         }
 
-        protected override IEnumerator ReadingNodeRoutine()
+        protected override void ReadingNodeRoutine()
         {
-            yield return null;
+
         }
     }
 }

@@ -51,11 +51,11 @@ namespace Dialog
                 return;
             }
 
-            StartCoroutine(ReadingNodeRoutine());
+            ReadingNodeRoutine();
             DialogVisitCounter.CountVisit(_curReadingNode.guid);
         }
 
-        protected abstract IEnumerator ReadingNodeRoutine();
+        protected abstract void ReadingNodeRoutine();
 
         public virtual void SetTextOutDelay(float delay) => _textOutDelay = delay;
 

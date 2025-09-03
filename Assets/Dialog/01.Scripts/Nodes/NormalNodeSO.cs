@@ -27,12 +27,6 @@ namespace Dialog
             contents = option.option;
             nextNode = option.nextNode;
 
-            startDialogEventSO = option.startDialogEventSO;
-            startDialogEvent = option.startDialogEvent;
-
-            endDialogEventSO = option.endDialogEventSO;
-            endDialogEvent = option.endDialogEvent;
-
             OnValidate();
         }
 

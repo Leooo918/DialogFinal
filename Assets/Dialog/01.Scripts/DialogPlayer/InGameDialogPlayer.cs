@@ -26,7 +26,7 @@ namespace Dialog
 
         #region ReadingRoutines
 
-        protected override IEnumerator ReadingNodeRoutine()
+        protected override void ReadingNodeRoutine()
         {
             _isReadingDialog = false;
 
@@ -34,9 +34,6 @@ namespace Dialog
             {
                 DialogActorManager.Instance.TryGetActor(node.reader.actorName, out _currentActor);
             }
-
-            _curReadingNode.startDialogEvent.ForEach(dialogEvent => dialogEvent.PlayEvent(this, _currentActor));
-            yield return new WaitUntil(() => !_curReadingNode.startDialogEvent.Exists(dialogEvent => dialogEvent.isCompleteEvent == false));
 
             _isReadingDialog = true;
             if (_curReadingNode is NormalNodeSO normal)
@@ -110,9 +107,6 @@ namespace Dialog
         {
             yield return new WaitForSeconds(0.1f);
             yield return new WaitUntil(waitPredict);
-
-            _curReadingNode.endDialogEvent.ForEach(dialogEvent => dialogEvent.PlayEvent(this, _currentActor));
-            yield return new WaitUntil(() => !_curReadingNode.endDialogEvent.Exists(dialogEvent => dialogEvent.isCompleteEvent == false));
 
             endAction?.Invoke();
             _curReadingNode = _nextNode;
