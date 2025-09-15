@@ -15,10 +15,6 @@ MonoBehaviour:
   guid: c54c0b0adc5b51b47a2bf5dd4fa6e4d5
   position: {x: 417.5, y: 285.00006}
   isFirstNode: 0
-  startDialogEventSO: []
-  startDialogEvent: []
-  endDialogEventSO: []
-  endDialogEvent: []
   animationGruop: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
   reader: {fileID: 11400000, guid: 24df2bcdafcd9dc429b1429e3e0a8fbc, type: 2}
   contents: "<size>\uB07C\uC58F\uD638\uC6B0~!!!</size>"
@@ -52,10 +48,6 @@ MonoBehaviour:
   guid: b1b7e6823c47ec241ad0d13d795dca5c
   position: {x: 956, y: 204.5}
   isFirstNode: 0
-  startDialogEventSO: []
-  startDialogEvent: []
-  endDialogEventSO: []
-  endDialogEvent: []
   animationGruop: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
   reader: {fileID: 11400000, guid: 24df2bcdafcd9dc429b1429e3e0a8fbc, type: 2}
   contents: "<size>\uB07C\uC58F\uD638\uC6B0!"
@@ -94,31 +86,6 @@ MonoBehaviour:
   - {fileID: 5795038432710794112}
   - {fileID: -5035902386080910420}
   - {fileID: 6608401330255238676}
-  - {fileID: 1381941212097720953}
---- !u!114 &1381941212097720953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23aee5184e8159f4e9ee55e8ab227ed5, type: 3}
-  m_Name: BranchNodeSO
-  m_EditorClassIdentifier: 
-  guid: 56c54df13eda3474f81818fd78fc44ce
-  position: {x: 0, y: 0}
-  isFirstNode: 0
-  startDialogEventSO: []
-  startDialogEvent: []
-  endDialogEventSO: []
-  endDialogEvent: []
-  condition: {fileID: 0}
-  nextNodes: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &5795038432710794112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,27 +101,15 @@ MonoBehaviour:
   guid: 286aff04fca198e409d6e697f58be29c
   position: {x: 715.5, y: 285}
   isFirstNode: 0
-  startDialogEventSO: []
-  startDialogEvent: []
-  endDialogEventSO: []
-  endDialogEvent: []
   animationGroup: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
   options:
   - option: "\uB07C\uC58F\uD638\uC6B0?!"
     optionTxt: "\uB07C\uC58F\uD638\uC6B0?!"
     optionTagAnimations: []
-    startDialogEventSO: []
-    startDialogEvent: []
-    endDialogEventSO: []
-    endDialogEvent: []
     nextNode: {fileID: -5035902386080910420}
   - option: "\uBC0D\uB07C\uC58F\uD638\uC6B0!!!"
     optionTxt: "\uBC0D\uB07C\uC58F\uD638\uC6B0!!!"
     optionTagAnimations: []
-    startDialogEventSO: []
-    startDialogEvent: []
-    endDialogEventSO: []
-    endDialogEvent: []
     nextNode: {fileID: 6608401330255238676}
   optionPrefab: {fileID: -2199068703474868929, guid: f96be568de8eb164d8af3c30b3c615e7, type: 3}
   references:
@@ -175,10 +130,6 @@ MonoBehaviour:
   guid: 49e8384a0d7ab3841b03e324919123ef
   position: {x: 956, y: 362.5}
   isFirstNode: 0
-  startDialogEventSO: []
-  startDialogEvent: []
-  endDialogEventSO: []
-  endDialogEvent: []
   animationGruop: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
   reader: {fileID: 11400000, guid: 24df2bcdafcd9dc429b1429e3e0a8fbc, type: 2}
   contents: "<size>\uBC0D\uB07C\uC58F\uD638\uC6B0!"
@@ -212,10 +163,6 @@ MonoBehaviour:
   guid: 7a9791b3d20b24441bff8e471ae66722
   position: {x: 185.5, y: 285}
   isFirstNode: 1
-  startDialogEventSO: []
-  startDialogEvent: []
-  endDialogEventSO: []
-  endDialogEvent: []
   animationGruop: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
   reader: {fileID: 11400000, guid: 24df2bcdafcd9dc429b1429e3e0a8fbc, type: 2}
   contents: "<size>\uBC0D\uB07C\uC58F\uD638\uC6B0"

@@ -1,6 +1,7 @@
 using Dialog.Animation;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 namespace Dialog
@@ -108,8 +109,8 @@ namespace Dialog
                     if (i + 1 < txt.Length && txt[i + 1] == '/') continue;
 
                     int endPos = -1;
-                    string enumTxt = "";
-                    string factor = "";
+                    StringBuilder enumSb = new StringBuilder();
+                    StringBuilder factorSb = new StringBuilder();
 
                     //enum과 factor찾는 부분
                     for (int j = i + 1; j < txt.Length; j++)
@@ -126,7 +127,7 @@ namespace Dialog
                                     endPos = k;
                                     break;
                                 }
-                                factor += txt[k];
+                                factorSb.Append(txt[k]);
                             }
                             break;
                         }
@@ -136,13 +137,13 @@ namespace Dialog
                             break;
                         }
 
-                        enumTxt += txt[j];
+                        enumSb.Append(txt[j]);
                     }
 
                     //끝이 있고, Enum이 있다면
-                    if (Enum.TryParse(enumTxt, out TagEnum tag) && endPos > -1)
+                    if (Enum.TryParse(enumSb.ToString(), out TagEnum tag) && endPos > -1)
                     {
-                        TagStruct tagStruct = new TagStruct(tag, i, endPos, factor);
+                        TagStruct tagStruct = new TagStruct(tag, i, endPos, factorSb.ToString());
                         return tagStruct;
                     }
                 }
@@ -245,8 +246,8 @@ namespace Dialog
                     if (i + 1 < txt.Length && txt[i + 1] == '/') continue;
 
                     int endPos = -1;
-                    string enumTxt = "";
-                    string factor = "";
+                    StringBuilder enumSb = new StringBuilder();
+                    StringBuilder factorSb = new StringBuilder();
 
                     //enum과 factor찾는 부분
                     for (int j = i + 1; j < txt.Length; j++)
@@ -263,7 +264,7 @@ namespace Dialog
                                     endPos = k;
                                     break;
                                 }
-                                factor += txt[k];
+                                factorSb.Append(txt[k]);
                             }
                             break;
                         }
@@ -273,17 +274,17 @@ namespace Dialog
                             break;
                         }
 
-                        enumTxt += txt[j];
+                        enumSb.Append(txt[j]);
                     }
 
-                    TextAnimationSO animSO = textAnimationList.Find(animation => animation.TagID == enumTxt);
+                    TextAnimationSO animSO = textAnimationList.Find(animation => animation.TagID == enumSb.ToString());
                     if (animSO != null && endPos > -1)
                     {
                         TextAnimation animInfo = animSO.textAnimation.Instantiate();
                         animInfo.textGuid = Guid.NewGuid();
                         animInfo.startIndex = i;
                         animInfo.endIndex = endPos;
-                        animInfo.tag = enumTxt;
+                        animInfo.tag = enumSb.ToString();
 
                         return animInfo;
                     }
@@ -304,8 +305,7 @@ namespace Dialog
                 if (txt[i] == '<')
                 {
                     int endPos = -1;
-                    string enumTxt = "";
-                    string factor = "";
+                    StringBuilder enumSb = new StringBuilder();
 
                     if (i + 1 < txt.Length && txt[i + 1] == '/')
                     {
@@ -317,10 +317,10 @@ namespace Dialog
                                 break;
                             }
 
-                            enumTxt += txt[j];
+                            enumSb.Append(txt[j]);
                         }
 
-                        if (Enum.TryParse(enumTxt, out TMPTag t) && endPos > -1)
+                        if (Enum.TryParse(enumSb.ToString(), out TMPTag t) && endPos > -1)
                         {
                             ExcludeText tagStruct = new ExcludeText(i, endPos);
                             taglist.Add(tagStruct);
@@ -345,7 +345,6 @@ namespace Dialog
                                     endPos = k;
                                     break;
                                 }
-                                factor += txt[k];
                             }
                             break;
                         }
@@ -355,11 +354,11 @@ namespace Dialog
                             break;
                         }
 
-                        enumTxt += txt[j];
+                        enumSb.Append(txt[j]);
                     }
 
                     //끝이 있고, Enum이 있다면
-                    if (Enum.TryParse(enumTxt, out TMPTag tag) && endPos > -1)
+                    if (Enum.TryParse(enumSb.ToString(), out TMPTag tag) && endPos > -1)
                     {
                         ExcludeText tagStruct = new ExcludeText(i, endPos);
                         taglist.Add(tagStruct);
