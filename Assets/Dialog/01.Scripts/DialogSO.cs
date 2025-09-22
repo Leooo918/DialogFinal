@@ -1,4 +1,4 @@
-using Dialog.Animation;
+using Dialog.Tag;
 using System;
 using System.Collections.Generic;
 using UnityEditor;
@@ -10,7 +10,7 @@ namespace Dialog
     public class DialogSO : ScriptableObject
     {
         public DialogNodeType dialogMode;
-        public TextAnimationGroupSO animGroup;
+        public TextTagGroupSO animGroup;
         public ActorSO defaultPlayerActor;
 
         [Space]

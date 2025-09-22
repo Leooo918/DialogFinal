@@ -1,4 +1,4 @@
-using Dialog.Animation;
+using Dialog.Tag;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,12 +12,12 @@ namespace Dialog
         [SerializeField] protected string text;
 
         [ReadOnly] public string parsedText;
-        [SerializeReference] public List<TextAnimation> tagAnimations = new();
+        [SerializeReference] public List<TextTag> tagAnimations = new();
 
-        public void ParseTag(TextAnimationGroupSO animationGroup)
+        public void ParseTag(TextTagGroupSO animationGroup)
         {
             parsedText = text;
-            List<TextAnimation> animInstances = TagParser.ParseAnimation(ref parsedText, animationGroup.animations);
+            List<TextTag> animInstances = TagParser.ParseAnimation(ref parsedText, animationGroup.tagList);
 
             for (int i = animInstances.Count - 1; i >= 0; i--)
             {

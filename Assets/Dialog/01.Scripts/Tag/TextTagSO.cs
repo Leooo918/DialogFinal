@@ -1,15 +1,15 @@
 using System;
 using UnityEngine;
 
-namespace Dialog.Animation
+namespace Dialog.Tag
 {
-    [CreateAssetMenu(menuName = "SO/Dialog/TextAnimation")]
-    public class TextAnimationSO : ScriptableObject
+    [CreateAssetMenu(menuName = "SO/Dialog/TextTag")]
+    public class TextTagSO : ScriptableObject
     {
         public string TagID;
         public string animationClassName;
 
-        [SerializeReference] public TextAnimation textAnimation;
+        [SerializeReference] public TextTag textAnimation;
 
         private void OnValidate()
         {
@@ -18,7 +18,7 @@ namespace Dialog.Animation
                 if (textAnimation == null)
                 {
                     Type type = Type.GetType(animationClassName);
-                    TextAnimation animation = Activator.CreateInstance(type) as TextAnimation;
+                    TextTag animation = Activator.CreateInstance(type) as TextTag;
                     textAnimation = animation;
                 }
             }

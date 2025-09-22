@@ -1,4 +1,4 @@
-using Dialog.Animation;
+using Dialog.Tag;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +28,7 @@ namespace Dialog
         #region Data Getter
 
         public string GetText() => text.parsedText;
-        public List<TextAnimation> GetTextAnimation() => text.tagAnimations;
+        public List<TextTag> GetTextAnimation() => text.tagAnimations;
 
         #endregion
     }

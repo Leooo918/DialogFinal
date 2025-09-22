@@ -717,7 +717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c878ca21a2101b44d9619103e4eefe7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationGruop: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
+  animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
   _debugText: "<size>\uBC0D\uB07C\uC58F\uD638\uC6B0~!!!</size>"
 --- !u!1001 &1146214687
 PrefabInstance:

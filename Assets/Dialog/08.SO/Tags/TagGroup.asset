@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78aceb6164d06f24f91337e8d8473c38, type: 3}
-  m_Name: AnimationGruop
+  m_Script: {fileID: 11500000, guid: 82380178c680f12469d58b420055156e, type: 3}
+  m_Name: TagGroup
   m_EditorClassIdentifier: 
-  animations:
-  - {fileID: 11400000, guid: d69731329f82be8439001829aeea30dc, type: 2}
+  tagList:
+  - {fileID: 11400000, guid: 63c52b79c0dc22f43869a644ecd441ec, type: 2}
+  - {fileID: 11400000, guid: 32a93bb6816f78148b5b94c20c391f9e, type: 2}

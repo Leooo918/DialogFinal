@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 
-namespace Dialog.Animation
+namespace Dialog.Tag
 {
     [Serializable]
-    public abstract class TextAnimation
+    public abstract class TextTag
     {
         public Guid textGuid;
         [ReadOnly] public int startIndex;
@@ -14,6 +14,6 @@ namespace Dialog.Animation
         [HideInInspector] public string tag;
 
         public abstract void ApplyEffort(CharacterData characterDatas, TMP_AnimationPlayer player);
-        public abstract TextAnimation Instantiate();
+        public abstract TextTag Instantiate();
     }
 }

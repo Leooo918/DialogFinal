@@ -1,11 +1,11 @@
 using System;
 
-namespace Dialog.Animation
+namespace Dialog.Tag
 {
     [Serializable]
     public struct TextAnimationInfo
     {
-        public TextAnimationSO animSO;
+        public TextTagSO animSO;
         public int start, end;
         public string param;
     }

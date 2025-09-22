@@ -1,4 +1,4 @@
-using Dialog.Animation;
+using Dialog.Tag;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -152,10 +152,10 @@ namespace Dialog
             return null;
         }
 
-        public static List<TextAnimation> ParseAnimation(ref string txt, List<TextAnimationSO> textAnimationList)
+        public static List<TextTag> ParseAnimation(ref string txt, List<TextTagSO> textAnimationList)
         {
-            TextAnimation animation;
-            List<TextAnimation> animations = new List<TextAnimation>();
+            TextTag animation;
+            List<TextTag> animations = new List<TextTag>();
 
             if (string.IsNullOrEmpty(txt)) return animations;
 
@@ -173,7 +173,7 @@ namespace Dialog
                     for (int i = 0; i < animations.Count; i++)
                     {
                         //뒤에서 부터 찾아서 무조건 더 큼
-                        TextAnimation animInfo = animations[i];
+                        TextTag animInfo = animations[i];
                         animInfo.startIndex -= startTagSize;
                         animations[i] = animInfo;
                     }
@@ -192,7 +192,7 @@ namespace Dialog
                     for (int i = 0; i < animations.Count; i++)
                     {
                         //뒤에서 부터 찾아서 무조건 더 큼
-                        TextAnimation animInfo = animations[i];
+                        TextTag animInfo = animations[i];
                         if (animInfo.startIndex >= endPos) animInfo.startIndex -= tagEndText.Length;
                         animations[i] = animInfo;
                     }
@@ -234,7 +234,7 @@ namespace Dialog
             return animations;
         }
 
-        private static TextAnimation FindTag(string txt, List<TextAnimationSO> textAnimationList)
+        private static TextTag FindTag(string txt, List<TextTagSO> textAnimationList)
         {
             //뒤에서 부터 찾기
             for (int i = txt.Length - 1; i >= 0; i--)
@@ -277,10 +277,10 @@ namespace Dialog
                         enumSb.Append(txt[j]);
                     }
 
-                    TextAnimationSO animSO = textAnimationList.Find(animation => animation.TagID == enumSb.ToString());
+                    TextTagSO animSO = textAnimationList.Find(animation => animation.TagID == enumSb.ToString());
                     if (animSO != null && endPos > -1)
                     {
-                        TextAnimation animInfo = animSO.textAnimation.Instantiate();
+                        TextTag animInfo = animSO.textAnimation.Instantiate();
                         animInfo.textGuid = Guid.NewGuid();
                         animInfo.startIndex = i;
                         animInfo.endIndex = endPos;

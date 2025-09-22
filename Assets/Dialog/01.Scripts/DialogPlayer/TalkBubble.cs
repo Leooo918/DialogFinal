@@ -1,4 +1,4 @@
-using Dialog.Animation;
+using Dialog.Tag;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -33,7 +33,7 @@ namespace Dialog
 
         public void ClearContent()
         {
-            _contentText.SetText("", new List<TextAnimation>());
+            _contentText.SetText("", new List<TextTag>());
         }
     }
 }

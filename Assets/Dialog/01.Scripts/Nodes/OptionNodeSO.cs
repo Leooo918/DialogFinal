@@ -1,4 +1,4 @@
-using Dialog.Animation;
+using Dialog.Tag;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ namespace Dialog
 {
     public class OptionNodeSO : NodeSO
     {
-        public TextAnimationGroupSO animationGroup;
+        public TextTagGroupSO animationGroup;
         public List<Option> options = new List<Option>();
         public OptionButton optionPrefab;
 
@@ -51,7 +51,7 @@ namespace Dialog
     {
         public string option;
         [HideInInspector] public string optionTxt;
-        [SerializeReference] public List<TextAnimation> optionTagAnimations = new();
+        [SerializeReference] public List<TextTag> optionTagAnimations = new();
 
 
         [HideInInspector]public NodeSO nextNode;
@@ -62,10 +62,10 @@ namespace Dialog
             nextNode = null;
         }
 
-        public void Init(TextAnimationGroupSO animationGroup)
+        public void Init(TextTagGroupSO animationGroup)
         {
            optionTxt = option;
-           optionTagAnimations = TagParser.ParseAnimation(ref optionTxt, animationGroup.animations);
+           optionTagAnimations = TagParser.ParseAnimation(ref optionTxt, animationGroup.tagList);
         }
     }
 }

@@ -2,19 +2,21 @@ using System;
 using UnityEngine;
 
 
-namespace Dialog.Animation
+namespace Dialog.Tag
 {
     [Serializable]
     public class CharacterData
     {
+        public bool isContainVertex;
         public bool isVisible;
         public float timer;
 
         public MeshData source;
         public MeshData current;
 
-        public CharacterData()
+        public CharacterData(bool isContainVertex)
         {
+            this.isContainVertex = isContainVertex;
             isVisible = false;
             timer = 0;
 

@@ -1,4 +1,4 @@
-using Dialog.Animation;
+using Dialog.Tag;
 using System;
 using UnityEngine;
 
@@ -10,7 +10,7 @@ namespace Dialog
         [HideInInspector] public Vector2 position;
         [ReadOnly] public bool isFirstNode;
         [ReadOnly] public DialogNodeType nodeType;
-        [ReadOnly] public TextAnimationGroupSO animationGruop;
+        [ReadOnly] public TextTagGroupSO animationGruop;
         public Action<NodeSO> OnSetAsFirstNode;
 
 
