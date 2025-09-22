@@ -9,6 +9,7 @@ namespace Dialog
     [CustomEditor(typeof(OptionNodeSO))]
     public class OptionNodeEditor : Editor
     {
+        private OptionNodeSO _optionSO;
         public SerializedProperty _animationGroup;
         public SerializedProperty _optionPrefab;
         public SerializedProperty _options;
@@ -22,7 +23,7 @@ namespace Dialog
         private void OnEnable()
         {
             StyleSetup();
-            OptionNodeSO optionSO = (OptionNodeSO)target;
+            _optionSO = (OptionNodeSO)target;
 
             optionList = new ReorderableList(
                 serializedObject,
@@ -50,21 +51,21 @@ namespace Dialog
             };
 
             optionList.drawHeaderCallback = rect => EditorGUI.LabelField(rect, "Options");
-            optionList.onAddCallback = list => optionSO.AddOption();
+            optionList.onAddCallback = list => _optionSO.AddOption();
             optionList.onRemoveCallback = list =>
             {
-                if (optionSO.options.Count >= 0)
+                if (_optionSO.options.Count >= 0)
                 {
                     //선택된게 없으면
                     if (list.index == -1)
                     {
                         //제일 뒤에있는거를 지워라
-                        optionSO.RemoveOption(optionSO.options.Count - 1);
+                        _optionSO.RemoveOption(_optionSO.options.Count - 1);
                     }
                     else
                     {
                         //선택된거를 지워라
-                        optionSO.RemoveOption(list.index);
+                        _optionSO.RemoveOption(list.index);
                     }
                 }
             };
@@ -77,6 +78,11 @@ namespace Dialog
             optionList.DoLayoutList();
             EditorGUILayout.PropertyField(_optionPrefab);
             serializedObject.ApplyModifiedProperties();
+
+            if (GUILayout.Button("SetAsFirstNode"))
+            {
+                _optionSO.OnSetAsFirstNode?.Invoke(_optionSO);
+            }
         }
 
         private void StyleSetup()

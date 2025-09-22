@@ -7,7 +7,10 @@ namespace Dialog
     [UxmlElement]
     public partial class SplitView : TwoPaneSplitView
     {
-    
+        public void SetConditionInspectorActive(bool activeConditionInspector)
+        {
+            fixedPaneInitialDimension = activeConditionInspector ? 300 : 1000;
+        }
     }
 }
 

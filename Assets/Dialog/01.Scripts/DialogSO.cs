@@ -9,8 +9,10 @@ namespace Dialog
     [CreateAssetMenu(menuName = "SO/Dialog/DialogSO")]
     public class DialogSO : ScriptableObject
     {
+        public DialogNodeType dialogMode;
         public TextAnimationGroupSO animGroup;
         public ActorSO defaultPlayerActor;
+
         [Space]
         public List<NodeSO> nodes;
 
@@ -21,6 +23,7 @@ namespace Dialog
             NodeSO node = ScriptableObject.CreateInstance(type) as NodeSO;
             node.name = type.Name;
             node.guid = GUID.Generate().ToString();
+            node.animationGruop = animGroup;
             nodes.Add(node);
 
             AssetDatabase.AddObjectToAsset(node, this);
@@ -37,15 +40,20 @@ namespace Dialog
 
         public void AddChild(NodeSO parent, NodeSO nextNode, int index)
         {
-            if (parent is NormalNodeSO node)
+            if (parent is IngameNodeSO ingame)
             {
-                node.nextNode = nextNode;
+                ingame.linkedNode = nextNode;
                 return;
+            }
+
+            if (parent is VisualNovelNodeSO visualNovel)
+            {
+                
             }
 
             if (parent is OptionNodeSO option)
             {
-                option.AddOption(nextNode, index);
+                option.SetOption(nextNode, index);
                 return;
             }
 
@@ -58,10 +66,15 @@ namespace Dialog
 
         public void RemoveChild(NodeSO parent, NodeSO child, int index)
         {
-            if (parent is NormalNodeSO node)
+            if (parent is IngameNodeSO ingame)
             {
-                node.nextNode = null;
+                ingame.linkedNode = null;
                 return;
+            }
+
+            if (parent is VisualNovelNodeSO visualNovel)
+            {
+
             }
 
             if (parent is OptionNodeSO option)
@@ -82,8 +95,13 @@ namespace Dialog
         {
             List<NodeSO> children = new List<NodeSO>();
 
-            if (node is NormalNodeSO normal)
-                children.Add(normal.nextNode);
+            if(node is IngameNodeSO ingame)
+                children.Add(ingame.linkedNode);
+
+            if(node is VisualNovelNodeSO visualNovel)
+            {
+
+            }
 
             if (node is OptionNodeSO option)
                 option.options.ForEach(opt => children.Add(opt.nextNode));
@@ -94,5 +112,12 @@ namespace Dialog
             return children;
         }
 #endif
+    }
+
+    public enum DialogNodeType
+    {
+        IngameMode = 1,
+        VisualNovelMode = 2,
+        FlexMode = 4,
     }
 }

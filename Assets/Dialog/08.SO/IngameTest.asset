@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8447157717747382023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7870a4eed172848bd52da19d69a590, type: 3}
+  m_Name: IngameNodeSO
+  m_EditorClassIdentifier: 
+  guid: 14f82d7a547ad1948a68ac7119377aea
+  position: {x: 850.5, y: 359.5}
+  isFirstNode: 0
+  nodeType: 1
+  animationGruop: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
+  reader: {fileID: 0}
+  text:
+    text: 
+    parsedText: 
+    tagAnimations: []
+  linkedNode: {fileID: -6207816194296427522}
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &-6207816194296427522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23aee5184e8159f4e9ee55e8ab227ed5, type: 3}
+  m_Name: BranchNodeSO
+  m_EditorClassIdentifier: 
+  guid: aafb31a6b17ddf14391e9772fec0f6da
+  position: {x: 1127.5, y: 359.5}
+  isFirstNode: 0
+  nodeType: 1
+  animationGruop: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
+  condition: {fileID: 11400000, guid: 4766e6aada002104eb7bcf8687eb23d3, type: 2}
+  nextNodes: []
 --- !u!114 &-5305756745479392934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +111,32 @@ MonoBehaviour:
         tag: size
         duration: 0.2
         amplitude: -1
+--- !u!114 &-404154464647041605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7870a4eed172848bd52da19d69a590, type: 3}
+  m_Name: IngameNodeSO
+  m_EditorClassIdentifier: 
+  guid: 4173b4aab97097940b950c09ba0e7c46
+  position: {x: 316.5, y: 359.5}
+  isFirstNode: 1
+  nodeType: 1
+  animationGruop: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
+  reader: {fileID: 0}
+  text:
+    text: 
+    parsedText: 
+    tagAnimations: []
+  linkedNode: {fileID: 307833907729445528}
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,14 +149,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5428f57e6e1463b4b8d0636e183f2213, type: 3}
   m_Name: IngameTest
   m_EditorClassIdentifier: 
+  dialogMode: 1
   animGroup: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
   defaultPlayerActor: {fileID: 11400000, guid: 096a0d56132461f4ba048bdc974149d7, type: 2}
   nodes:
-  - {fileID: 8631172013708795590}
-  - {fileID: -5305756745479392934}
-  - {fileID: 5795038432710794112}
-  - {fileID: -5035902386080910420}
-  - {fileID: 6608401330255238676}
+  - {fileID: -404154464647041605}
+  - {fileID: 307833907729445528}
+  - {fileID: -8447157717747382023}
+  - {fileID: -6207816194296427522}
+--- !u!114 &307833907729445528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf12593a4a5d8247bdea87308ca2eb6, type: 3}
+  m_Name: OptionNodeSO
+  m_EditorClassIdentifier: 
+  guid: b3ec9fc571e445b4da04d9b830ae3658
+  position: {x: 572, y: 359.5}
+  isFirstNode: 0
+  nodeType: 4
+  animationGruop: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
+  animationGroup: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
+  options:
+  - option: 
+    optionTxt: 
+    optionTagAnimations: []
+    nextNode: {fileID: -8447157717747382023}
+  optionPrefab: {fileID: -2199068703474868929, guid: f96be568de8eb164d8af3c30b3c615e7, type: 3}
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &5795038432710794112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,16 +199,18 @@ MonoBehaviour:
   guid: 286aff04fca198e409d6e697f58be29c
   position: {x: 715.5, y: 285}
   isFirstNode: 0
+  nodeType: 4
+  animationGruop: {fileID: 0}
   animationGroup: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
   options:
   - option: "\uB07C\uC58F\uD638\uC6B0?!"
     optionTxt: "\uB07C\uC58F\uD638\uC6B0?!"
     optionTagAnimations: []
-    nextNode: {fileID: -5035902386080910420}
+    nextNode: {fileID: 0}
   - option: "\uBC0D\uB07C\uC58F\uD638\uC6B0!!!"
     optionTxt: "\uBC0D\uB07C\uC58F\uD638\uC6B0!!!"
     optionTagAnimations: []
-    nextNode: {fileID: 6608401330255238676}
+    nextNode: {fileID: 0}
   optionPrefab: {fileID: -2199068703474868929, guid: f96be568de8eb164d8af3c30b3c615e7, type: 3}
   references:
     version: 2

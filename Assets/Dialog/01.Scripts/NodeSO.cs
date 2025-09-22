@@ -1,5 +1,5 @@
-using System.Collections.Generic;
-using System.Linq;
+using Dialog.Animation;
+using System;
 using UnityEngine;
 
 namespace Dialog
@@ -8,12 +8,12 @@ namespace Dialog
     {
         [HideInInspector] public string guid;
         [HideInInspector] public Vector2 position;
-        public bool isFirstNode;
+        [ReadOnly] public bool isFirstNode;
+        [ReadOnly] public DialogNodeType nodeType;
+        [ReadOnly] public TextAnimationGroupSO animationGruop;
+        public Action<NodeSO> OnSetAsFirstNode;
 
-        public bool IsCompleteEvent()
-        {
-            bool isComplete = true;
-            return isComplete;
-        }
+
+        public virtual void OnEnable() { }
     }
 }

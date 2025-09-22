@@ -3,7 +3,9 @@ guid: 5428f57e6e1463b4b8d0636e183f2213
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - animGroup: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
+  - defaultPlayerActor: {fileID: 11400000, guid: 096a0d56132461f4ba048bdc974149d7, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

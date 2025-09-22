@@ -16,7 +16,8 @@ namespace Dialog
         public List<Port> inputs = new();
         public List<Port> outputs = new();
 
-        public NodeView(NodeSO nodeSO) : base("Assets/Dialog/01.Scripts/Editor//DataBind/NodeView.uxml")        {
+        public NodeView(NodeSO nodeSO) : base("Assets/Dialog/01.Scripts/Editor//DataBind/NodeView.uxml")
+        {
             this.nodeSO = nodeSO;
             this.title = nodeSO.name;
             this.viewDataKey = nodeSO.guid;
@@ -30,7 +31,11 @@ namespace Dialog
 
         private void CreateOutputPort()
         {
-            if (nodeSO is NormalNodeSO)
+            if (nodeSO is IngameNodeSO)
+            {
+                output = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(bool));
+            }
+            else if (nodeSO is VisualNovelNodeSO)
             {
                 output = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(bool));
             }

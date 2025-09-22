@@ -1,7 +1,5 @@
-using Dialog;
 using Dialog.Animation;
 using System;
-using TMPro;
 using UnityEngine;
 
 
@@ -11,9 +9,10 @@ namespace Dialog
     public class Actor
     {
         public ActorSO actorInfo;
-        public Transform target;
+        public Transform actorTransform;
         public SpriteRenderer spriteRenderer;
         public TalkBubble personalTalkBubble;
+        //Customize here to add more work at actor
 
         public TMP_AnimationPlayer ContentText => personalTalkBubble.ContentTextMeshPro;
 

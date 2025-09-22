@@ -10,11 +10,10 @@ namespace Dialog
         public ConditionSO condition;
         [HideInInspector] public List<NodeSO> nextNodes = new List<NodeSO>();
 
-        public Action onChangeCondition;
+        public Action OnChangeCondition;
 
-        private void OnValidate()
-        {
-            onChangeCondition?.Invoke();
-        }
+
+        public override void OnEnable() { nodeType = DialogNodeType.IngameMode; }
+        private void OnValidate() { OnChangeCondition?.Invoke(); }
     }
 }

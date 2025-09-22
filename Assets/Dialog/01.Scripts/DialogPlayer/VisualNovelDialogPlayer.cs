@@ -23,7 +23,7 @@ namespace Dialog
 
         public override void ReadSingleLine()
         {
-            if (_curReadingNode is NormalNodeSO normal)
+            if (_curReadingNode is VisualNovelNodeSO normal)
             {
 
             }

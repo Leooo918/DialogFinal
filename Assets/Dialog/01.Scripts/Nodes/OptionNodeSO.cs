@@ -15,13 +15,20 @@ namespace Dialog
 
         public Action OnOptionChange;
 
+
+        public override void OnEnable()
+        {
+            nodeType = DialogNodeType.FlexMode;
+            options.ForEach(option => option.Init(animationGroup));
+        }
+
         public void AddOption()
         {
             options.Add(new Option());
             OnOptionChange?.Invoke();
         }
 
-        public void AddOption(NodeSO nextNode, int index)
+        public void SetOption(NodeSO nextNode, int index)
         {
             options[index].nextNode = nextNode;
             OnOptionChange?.Invoke();
@@ -36,25 +43,6 @@ namespace Dialog
         public void RemoveEdge(int idx)
         {
             options[idx].nextNode = null;
-        }
-
-        public void RemoveOption(NodeSO nextNode)
-        {
-            for (int i = 0; i < options.Count; i++)
-            {
-                if (options[i].nextNode == nextNode)
-                {
-                    options[i] = null;
-                    break;
-                }
-            }
-
-            OnOptionChange?.Invoke();
-        }
-
-        private void OnEnable()
-        {
-            options.ForEach(option => option.Init(animationGroup));
         }
     }
 

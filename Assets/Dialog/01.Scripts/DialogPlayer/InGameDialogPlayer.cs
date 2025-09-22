@@ -30,13 +30,12 @@ namespace Dialog
         {
             _isReadingDialog = false;
 
-            if (_curReadingNode is NormalNodeSO node)
-            {
+            //Text 노드일 경우 Actor를 갸져와
+            if (_curReadingNode is IngameNodeSO node)
                 DialogActorManager.Instance.TryGetActor(node.reader.actorName, out _currentActor);
-            }
 
             _isReadingDialog = true;
-            if (_curReadingNode is NormalNodeSO normal)
+            if (_curReadingNode is IngameNodeSO normal)
             {
                 _currentActor?.personalTalkBubble.SetEnabled();
                 _readingNodeRoutine = StartCoroutine(ReadingNormalNodeRoutine(normal));
@@ -51,11 +50,11 @@ namespace Dialog
             }
         }
 
-        private IEnumerator ReadingNormalNodeRoutine(NormalNodeSO node)
+        private IEnumerator ReadingNormalNodeRoutine(IngameNodeSO node)
         {
             TMP_AnimationPlayer animationPlayer = _currentActor.ContentText;
 
-            animationPlayer.SetText(node.GetContents(), node.GetAllAnimations());
+            animationPlayer.SetText(node.GetText(), node.GetTextAnimation());
             yield return null;
             animationPlayer.DisableText();
             _isReadingDialog = true;
@@ -69,7 +68,7 @@ namespace Dialog
                 yield return new WaitUntil(() => stopReading == false);
             }
 
-            _nextNode = node.nextNode;
+            _nextNode = node.linkedNode;
             StartCoroutine(WaitNodeRoutine(GetInput, _currentActor.OnCompleteNode));
         }
 
@@ -83,15 +82,10 @@ namespace Dialog
         private void OnSelectOption(Option option)
         {
             _optionTalk = _curReadingNode as OptionNodeSO;
-            NormalNodeSO nodeInstance = ScriptableObject.CreateInstance<NormalNodeSO>();
+            IngameNodeSO nodeInstance = ScriptableObject.CreateInstance<IngameNodeSO>();
             nodeInstance.animationGruop = Dialog.animGroup;
             nodeInstance.SetNormalNodeByOption(option, Dialog.defaultPlayerActor);
             _curReadingNode = nodeInstance;
-            //if (DialogActorManager.Instance.TryGetActor(Dialog.defaultPlayerActor.actorName, out _currentActor) == false)
-            //{
-            //    Debug.LogError($"Player Actor is not set in the gameScene : Player named{Dialog.defaultPlayerActor.actorName}");
-            //}
-            
             
             ReadSingleLine();
         }

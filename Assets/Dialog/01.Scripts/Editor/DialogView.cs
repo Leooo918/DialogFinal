@@ -13,9 +13,11 @@ namespace Dialog
     public partial class DialogView : GraphView
     {
         public Action<NodeView> OnNodeSelected;
+        public Action OnNodeRemoved;
         private DialogSO _dialog;
 
         public DialogSO Dialog => _dialog;
+
 
         public DialogView()
         {
@@ -36,19 +38,7 @@ namespace Dialog
             graphViewChanged += OnGraphViewChanged;
 
 
-            _dialog.nodes.ForEach(node =>
-            {
-                CreateNodeView(node);
-                if (node is OptionNodeSO option)
-                {
-                    //여기서 Option에 다시 그리는걸 구독해줘
-                    option.OnOptionChange = Refresh;
-                }
-                if (node is BranchNodeSO branch)
-                {
-                    branch.onChangeCondition = Refresh;
-                }
-            });
+            _dialog.nodes.ForEach(CreateNodeView);
 
             //자식한테 엣지 연결해주기
             _dialog.nodes.ForEach(node =>
@@ -63,14 +53,28 @@ namespace Dialog
                     {
                         NodeView childNV = FindNodeView(cn);
 
+                        //output이 여러개인 경우
                         if (parent.output == null)
                         {
-                            Debug.Log(index);
+                            //시작 노드일 경우
+                            if (childNV.input == null)
+                            {
+                                _dialog.RemoveChild(parent.nodeSO, childNV.nodeSO, index);
+                                return;
+                            }
+
                             Edge edge = parent.outputs[index].ConnectTo(childNV.input);
                             AddElement(edge);
                         }
                         else
                         {
+                            //시작 노드일 경우
+                            if (childNV.input == null)
+                            {
+                                _dialog.RemoveChild(parent.nodeSO, childNV.nodeSO, index);
+                                return;
+                            }
+
                             Edge edge = parent.output.ConnectTo(childNV.input);
                             AddElement(edge);
                         }
@@ -79,8 +83,6 @@ namespace Dialog
                 });
             });
         }
-
-        private void Refresh() => PopulateTree(_dialog);
 
         private NodeView FindNodeView(NodeSO node) => GetNodeByGuid(node.guid) as NodeView;
 
@@ -115,6 +117,7 @@ namespace Dialog
                         _dialog.RemoveChild(parent.nodeSO, child.nodeSO, index);
                     }
                 });
+                OnNodeRemoved?.Invoke();
             }
 
             if (changeInfo.edgesToCreate != null)
@@ -148,6 +151,10 @@ namespace Dialog
             NodeView nv = new NodeView(node);
             nv.OnNodeSelected = OnNodeSelected;
             AddElement(nv);
+
+            node.OnSetAsFirstNode = OnSetAsFirstNode;
+            if (node is OptionNodeSO option) option.OnOptionChange = Refresh;
+            if (node is BranchNodeSO branch) branch.OnChangeCondition = Refresh;
         }
 
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
@@ -160,6 +167,7 @@ namespace Dialog
             if (_dialog == null)
             {
                 evt.StopPropagation();
+                Debug.LogWarning("Dialog Not Selected");
                 return;
             }
 
@@ -168,8 +176,19 @@ namespace Dialog
 
             foreach (Type type in types)
             {
-                evt.menu.AppendAction(type.Name,
-                    (a) => CreateNode(type, mousePosition));
+                NodeSO node = (NodeSO)Activator.CreateInstance(type);
+                node.OnEnable();
+
+                if (_dialog.dialogMode == DialogNodeType.FlexMode || node.nodeType == DialogNodeType.FlexMode)
+                {
+                    evt.menu.AppendAction(type.Name,
+                        (a) => CreateNode(type, mousePosition));
+                }
+                else if (_dialog.dialogMode == node.nodeType)
+                {
+                    evt.menu.AppendAction(type.Name,
+                        (a) => CreateNode(type, mousePosition));
+                }
             }
         }
 
@@ -177,7 +196,24 @@ namespace Dialog
         {
             NodeSO node = _dialog.CreateNode(type);
             node.position = position;
+            node.OnEnable();
+
+            if (_dialog.nodes.Count == 1) node.isFirstNode = true;
             CreateNodeView(node);
+        }
+
+        private void OnSetAsFirstNode(NodeSO node)
+        {
+            for (int i = 0; i < _dialog.nodes.Count; i++)
+            {
+                _dialog.nodes[i].isFirstNode = (_dialog.nodes[i] == node);
+            }
+            Refresh();
+        }
+
+        private void Refresh()
+        {
+            PopulateTree(_dialog);
         }
     }
 

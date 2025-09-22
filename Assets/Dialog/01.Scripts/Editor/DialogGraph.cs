@@ -16,6 +16,7 @@ namespace Dialog
         private DialogView _dialogView;
         private InspectorView _inspectorView;
         private InspectorView _conditionInspector;
+        private SplitView _innerSplitView;
 
         private SerializedObject _dialogObj;
 
@@ -48,8 +49,10 @@ namespace Dialog
             _dialogView = content.Q<DialogView>("dialog-view");
             _inspectorView = content.Q<InspectorView>("inspector-view");
             _conditionInspector = content.Q<InspectorView>("condition-view");
+            _innerSplitView = content.Q<SplitView>("inner-split-view");
 
             _dialogView.OnNodeSelected += HandleNodeSlect;
+            _dialogView.OnNodeRemoved += ClearInspector;
             OnSelectionChange();
         }
 
@@ -90,11 +93,20 @@ namespace Dialog
             if (view.nodeSO is BranchNodeSO branch)
             {
                 _conditionInspector.UpdateSelection(branch.condition);
+                _innerSplitView.SetConditionInspectorActive(true);
+
             }
             else
             {
                 _conditionInspector.ClearSelection();
+                _innerSplitView.SetConditionInspectorActive(false);
             }
+        }
+
+        public void ClearInspector()
+        {
+            _inspectorView.ClearSelection();
+            _conditionInspector.ClearSelection();
         }
 
         //private void OnInspectorUpdate()

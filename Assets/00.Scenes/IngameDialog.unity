@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actor:
     actorInfo: {fileID: 11400000, guid: 24df2bcdafcd9dc429b1429e3e0a8fbc, type: 2}
-    target: {fileID: 45689466}
+    actorTransform: {fileID: 45689466}
     spriteRenderer: {fileID: 1375715651}
     personalTalkBubble: {fileID: 721746736}
 --- !u!1 &49830338
@@ -1678,7 +1678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actor:
     actorInfo: {fileID: 11400000, guid: 096a0d56132461f4ba048bdc974149d7, type: 2}
-    target: {fileID: 2136903925}
+    actorTransform: {fileID: 2136903925}
     spriteRenderer: {fileID: 1858485849}
     personalTalkBubble: {fileID: 1146214690}
 --- !u!1660057539 &9223372036854775807
