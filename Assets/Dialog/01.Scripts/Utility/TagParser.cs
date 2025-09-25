@@ -141,7 +141,7 @@ namespace Dialog
                     }
 
                     //끝이 있고, Enum이 있다면
-                    if (Enum.TryParse(enumSb.ToString(), out TagEnum tag) && endPos > -1)
+                    if (Enum.TryParse(enumSb.ToString(), out TagType tag) && endPos > -1)
                     {
                         TagStruct tagStruct = new TagStruct(tag, i, endPos, factorSb.ToString());
                         return tagStruct;
@@ -382,11 +382,11 @@ namespace Dialog
 
     public class TagStruct
     {
-        public TagEnum tag;
+        public TagType tag;
         public int stratPos, endPos;
         public string factors;
 
-        public TagStruct(TagEnum tag, int stratPos, int endPos, string factors)
+        public TagStruct(TagType tag, int stratPos, int endPos, string factors)
         {
             this.tag = tag;
             this.stratPos = stratPos;

@@ -14,7 +14,7 @@ namespace Dialog
         public FromupTagAnimation()
         {
             _timing = AnimTiming.Start;
-            tagType = TagEnum.Fromup;
+            tagType = TagType.Fromup;
             _checkEndPos = true;
         }
 

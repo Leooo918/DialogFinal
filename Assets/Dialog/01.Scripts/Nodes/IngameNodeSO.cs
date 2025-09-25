@@ -19,7 +19,7 @@ namespace Dialog
         {
             guid = "";
             reader = defaultPlayerActor;
-            text = new TagableText(option.option);
+            text = new TagableText(option.optionTxt.GetFullText());
             linkedNode = option.nextNode;
 
             text.ParseTag(animationGruop);

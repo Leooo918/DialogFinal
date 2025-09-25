@@ -37,6 +37,8 @@ namespace Dialog
 
             tagAnimations = animInstances;
         }
+        public string GetFullText() => text;
+        public string GetParsedText() => parsedText;
 
         public TagableText(string text)
         {

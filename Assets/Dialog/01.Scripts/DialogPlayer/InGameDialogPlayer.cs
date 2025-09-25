@@ -32,7 +32,7 @@ namespace Dialog
 
             //Text 노드일 경우 Actor를 갸져와
             if (_curReadingNode is IngameNodeSO node)
-                DialogActorManager.Instance.TryGetActor(node.reader.actorName, out _currentActor);
+                DialogActorManager.TryGetActor(node.reader.actorName, out _currentActor);
 
             _isReadingDialog = true;
             if (_curReadingNode is IngameNodeSO normal)
@@ -52,9 +52,9 @@ namespace Dialog
 
         private IEnumerator ReadingNormalNodeRoutine(IngameNodeSO node)
         {
-            TMP_AnimationPlayer animationPlayer = _currentActor.ContentText;
+            TMP_TagableTextReader animationPlayer = _currentActor.ContentText;
 
-            animationPlayer.SetText(node.GetText(), node.GetTextAnimation());
+            animationPlayer.SetText(node.text);
             yield return null;
             animationPlayer.DisableText();
             _isReadingDialog = true;
@@ -69,7 +69,7 @@ namespace Dialog
             }
 
             _nextNode = node.linkedNode;
-            StartCoroutine(WaitNodeRoutine(GetInput, _currentActor.OnCompleteNode));
+            StartCoroutine(WaitNodeRoutine(() => _isInputDetected, _currentActor.OnCompleteNode));
         }
 
 

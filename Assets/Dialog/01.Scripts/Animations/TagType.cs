@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Dialog
 {
-    public enum TagEnum
+    public enum TagType
     {
         None,
         Wait,       //Parameter: (float time)

@@ -4,7 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - animGroup: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
+  - animGroup: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
   - defaultPlayerActor: {fileID: 11400000, guid: 096a0d56132461f4ba048bdc974149d7, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}

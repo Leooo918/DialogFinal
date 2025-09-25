@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,29 +7,37 @@ using UnityEngine;
 namespace Dialog.Tag
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
-    public class TMP_AnimationPlayer : MonoBehaviour
+    public partial class TMP_TagableTextReader : MonoBehaviour
     {
+        public event Action onCompleteReadLine;
         [SerializeField] private TextTagGroupSO animationGruop;
 
         private TextMeshProUGUI _tmp;
         private TMP_TextInfo _tmpTextInfo;
+
         private List<TextTag> _textAnimInfos;
         private List<CharacterData> _characterDatas;
 
         private string _text;
         private bool _isTextInit = false;
 
-        [SerializeField] private string _debugText;
-
-        public int textLength => _text.Length;
+        public int textLength => _tmpTextInfo.characterCount;
         public int maxVisibleCharacters => _tmp.maxVisibleCharacters;
 
         private void Awake()
         {
-            Init();
+            _tmp = GetComponent<TextMeshProUGUI>();
+            _tmpTextInfo = _tmp.textInfo;
         }
 
         private void LateUpdate()
+        {
+            UpdateText();
+        }
+
+        public char GetText(int index) => _text[index];
+
+        private void UpdateText()
         {
             if (_isTextInit == false) return;
 
@@ -41,10 +50,9 @@ namespace Dialog.Tag
                     if (characterInfo.isVisible == false) continue;
 
                     _characterDatas[i].timer += Time.deltaTime;
-                    animation.ApplyEffort(_characterDatas[i], this);
+                    animation.ApplyEffort(_characterDatas[i]);
                 }
             });
-
 
             Vector3[] vertices = new Vector3[_tmpTextInfo.meshInfo[0].vertices.Length];
             Color32[] colors = new Color32[_tmpTextInfo.meshInfo[0].colors32.Length];
@@ -81,7 +89,8 @@ namespace Dialog.Tag
             }
         }
 
-        public char GetText(int index) => _text[index];
+
+        #region SETTEXT
 
         public void SetText(string text, List<TextTag> animations)
         {
@@ -90,10 +99,19 @@ namespace Dialog.Tag
 
             _tmp.SetText(_text);
             _tmp.maxVisibleCharacters = _text.Length;
-            //for (int i = 0; i < _tmp.textInfo.characterCount; i++)
-            //{
-            //    _tmp.textInfo.characterInfo[i].isVisible = true;
-            //}
+            _tmp.ForceMeshUpdate(true, true);
+
+            _isTextInit = false;
+            StartCoroutine(DelaySetCharacterData());
+        }
+
+        public void SetText(TagableText text)
+        {
+            _text = text.parsedText;
+            _textAnimInfos = text.tagAnimations;
+
+            _tmp.SetText(_text);
+            _tmp.maxVisibleCharacters = _text.Length;
             _tmp.ForceMeshUpdate(true, true);
 
             _isTextInit = false;
@@ -126,23 +144,24 @@ namespace Dialog.Tag
                 _characterDatas.Add(data);
             }
 
+            _textAnimInfos.ForEach(animation =>
+            {
+                //if(animation is IGameFlowTag gameFlow)
+                //    gameFlow.SetData();
+            });
+
             _isTextInit = true;
         }
 
-        private void Init()
-        {
-            _tmp = GetComponent<TextMeshProUGUI>();
-            _tmpTextInfo = _tmp.textInfo;
-        }
+        #endregion
 
+        //모든 텍스트 투명처리
         public void DisableText()
         {
             _tmp.maxVisibleCharacters = 0;
             _characterDatas?.ForEach(data =>
             {
-                for (int i = 0; i < data.current.colors.Length; i++)
-                    data.current.colors[i].a = 0;
-
+                if (data.isContainVertex == false) return;
                 data.isVisible = false;
             });
         }
@@ -152,10 +171,7 @@ namespace Dialog.Tag
             if (_tmp.maxVisibleCharacters >= textLength) return;
 
             CharacterData data = _characterDatas[_tmp.maxVisibleCharacters++];
-            data.isVisible = true;
-
-            for (int i = 0; i < data.current.colors.Length; i++)
-                data.current.colors[i].a = 255;
+            if (data.isContainVertex) data.isVisible = true;
         }
     }
 }

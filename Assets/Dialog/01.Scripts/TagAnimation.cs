@@ -16,7 +16,7 @@ namespace Dialog
         protected bool _isTagStart = false;
         protected bool _isTagEnd = false;
 
-        public TagEnum tagType;
+        public TagType tagType;
         public int animStartPos;
         public int animLength;
 

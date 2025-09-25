@@ -12,6 +12,7 @@ namespace Dialog
         public DialogNodeType dialogMode;
         public TextTagGroupSO animGroup;
         public ActorSO defaultPlayerActor;
+        public TextTag defaultOpeningTag;
 
         [Space]
         public List<NodeSO> nodes;

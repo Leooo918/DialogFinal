@@ -13,7 +13,7 @@ namespace Dialog
         public WobbleTagAnimation()
         {
             _timing = AnimTiming.Update;
-            tagType = TagEnum.Wobble;
+            tagType = TagType.Wobble;
             _checkEndPos = true;
         }
 

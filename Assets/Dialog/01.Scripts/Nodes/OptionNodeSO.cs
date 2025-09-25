@@ -19,7 +19,13 @@ namespace Dialog
         public override void OnEnable()
         {
             nodeType = DialogNodeType.FlexMode;
-            options.ForEach(option => option.Init(animationGroup));
+            options.ForEach(option => option.optionTxt.ParseTag(animationGroup));
+        }
+
+        private void OnValidate()
+        {
+            OnOptionChange?.Invoke();
+            options.ForEach(option => option.optionTxt.ParseTag(animationGroup));
         }
 
         public void AddOption()
@@ -49,23 +55,17 @@ namespace Dialog
     [Serializable]
     public class Option
     {
-        public string option;
-        [HideInInspector] public string optionTxt;
-        [SerializeReference] public List<TextTag> optionTagAnimations = new();
-
-
-        [HideInInspector]public NodeSO nextNode;
+        public TagableText optionTxt;
+        [HideInInspector] public NodeSO nextNode;
 
         public Option()
         {
-            option = "";
+            optionTxt = new TagableText("");
             nextNode = null;
         }
 
         public void Init(TextTagGroupSO animationGroup)
         {
-           optionTxt = option;
-           optionTagAnimations = TagParser.ParseAnimation(ref optionTxt, animationGroup.tagList);
         }
     }
 }

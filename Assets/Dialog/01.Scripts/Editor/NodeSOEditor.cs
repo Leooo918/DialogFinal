@@ -9,14 +9,15 @@ public class NodeSOEditor : Editor
 
     private void OnEnable()
     {
-        _target = (NodeSO)target;
+        if (target is NodeSO)
+            _target = (NodeSO)target;
     }
 
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
-        
-        if(GUILayout.Button("SetAsFirstNode"))
+
+        if (GUILayout.Button("SetAsFirstNode"))
         {
             _target.OnSetAsFirstNode?.Invoke(_target);
         }

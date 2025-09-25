@@ -13,7 +13,7 @@ namespace Dialog
         public WaitTagAnimation()
         {
             _timing = AnimTiming.OnTextOut;
-            tagType = TagEnum.Wait;
+            tagType = TagType.Wait;
             _stopReadingDuringAnimation = true;
             _checkEndPos = false;
         }

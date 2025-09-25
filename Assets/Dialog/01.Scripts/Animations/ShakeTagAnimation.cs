@@ -13,7 +13,7 @@ namespace Dialog
         public ShakeTagAnimation()
         {
             _timing = AnimTiming.Update;
-            tagType = TagEnum.Shake;
+            tagType = TagType.Shake;
             _checkEndPos = true;
         }
 

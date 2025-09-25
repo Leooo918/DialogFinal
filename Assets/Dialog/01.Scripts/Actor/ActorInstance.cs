@@ -9,12 +9,12 @@ namespace Dialog
 
         private void OnEnable()
         {
-            DialogActorManager.Instance.AddActor(_actor.actorInfo.actorName, _actor);
+            DialogActorManager.AddActor(_actor.actorInfo.actorName, _actor);
         }
 
         private void OnDisable()
         {
-            if (DialogActorManager.IsDestroyed == false) DialogActorManager.Instance.RemoveActor(_actor.actorInfo.actorName, _actor);
+            DialogActorManager.RemoveActor(_actor.actorInfo.actorName, _actor);
         }
     }
 }

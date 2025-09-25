@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Dialog.Tag;
 using System;
 using TMPro;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace Dialog
     {
         internal Action onSelect;
         [SerializeField] private RectTransform _bg;
-        [SerializeField] private TextMeshProUGUI _tmp;
+        [SerializeField] private TMP_TagableTextReader _tmp;
         [SerializeField] private float _closePosition;
         private CanvasGroup _canvasGroup;
         private Vector2 _originPos;

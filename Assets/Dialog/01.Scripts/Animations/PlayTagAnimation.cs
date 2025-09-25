@@ -12,7 +12,7 @@ namespace Dialog
         public PlayTagAnimation()
         {
             _timing = AnimTiming.Start;
-            tagType = TagEnum.Play;
+            tagType = TagType.Play;
             _checkEndPos = false;
         }
 

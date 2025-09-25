@@ -14,7 +14,7 @@ namespace Dialog
         public TalkBubble personalTalkBubble;
         //Customize here to add more work at actor
 
-        public TMP_AnimationPlayer ContentText => personalTalkBubble.ContentTextMeshPro;
+        public TMP_TagableTextReader ContentText => personalTalkBubble.ContentTextMeshPro;
 
         public void OnCompleteNode()
         {

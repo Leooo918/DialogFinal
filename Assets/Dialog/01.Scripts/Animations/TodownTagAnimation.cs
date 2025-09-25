@@ -14,7 +14,7 @@ namespace Dialog
         public TodownTagAnimation()
         {
             _timing = AnimTiming.End;
-            tagType = TagEnum.Todown;
+            tagType = TagType.Todown;
             _checkEndPos = true;
         }
 

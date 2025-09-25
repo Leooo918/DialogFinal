@@ -12,14 +12,12 @@ namespace Dialog
     public class OptionButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         public Action<NodeSO> OnClcickEvent;
-        [SerializeField] private TMP_AnimationPlayer _tmp;
-
-        private List<TagAnimation> _tagAnims = new List<TagAnimation>();
+        [SerializeField] private TMP_TagableTextReader _tmp;
         private NodeSO _nextNode;
 
         public void SetOption(Option optionStruct)
         {
-            _tmp.SetText(optionStruct.optionTxt, optionStruct.optionTagAnimations);
+            _tmp.SetText(optionStruct.optionTxt);
             _nextNode = optionStruct.nextNode;
         }
 

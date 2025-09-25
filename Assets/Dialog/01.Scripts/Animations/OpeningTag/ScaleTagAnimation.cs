@@ -13,7 +13,7 @@ namespace Dialog
         public ScaleTagAnimation()
         {
             _timing = AnimTiming.Start;
-            tagType = TagEnum.Scale;
+            tagType = TagType.Scale;
             _checkEndPos = true;
         }
 

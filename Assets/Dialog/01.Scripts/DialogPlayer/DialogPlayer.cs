@@ -18,7 +18,7 @@ namespace Dialog
         protected bool _isReadingDialog = false;
 
         [SerializeField] protected float _textOutDelay;
-        private bool _isInputDetected;
+        protected bool _isInputDetected;
 
         public float TextOutDelay => _textOutDelay;
         public DialogSO Dialog => _dialog;
@@ -32,7 +32,7 @@ namespace Dialog
             }
 
             _isReadingDialog = true;
-            _curReadingNode = _dialog.nodes[0];
+            _curReadingNode = _dialog.nodes.Find(node => node.isFirstNode);
             ReadSingleLine();
         }
 
@@ -59,45 +59,17 @@ namespace Dialog
 
         public virtual void SetTextOutDelay(float delay) => _textOutDelay = delay;
 
-        protected virtual  void Awake()
-        {
-            //_uiInputReader.OnSpaceEvent += HandleMoveToNextDialogue;
-        }
-        void OnDestroy()
-        {
-
-            //_uiInputReader.OnSpaceEvent -= HandleMoveToNextDialogue;
-        }
 
         protected virtual void Update()
         {
             if (Keyboard.current.spaceKey.wasPressedThisFrame)
             {
-                HandleMoveToNextDialogue();
+                _isInputDetected = true;
             }
-        }
-
-        private void HandleMoveToNextDialogue()
-        {
-            _isInputDetected = true;
-            //StartCoroutine(HandelMoveToNextRoutine());
-        }
-
-        private IEnumerator HandelMoveToNextRoutine()
-        {
-            _isInputDetected = true;
-            yield return new WaitForSeconds(0.1f);
-            _isInputDetected = false;
-        }
-
-        protected virtual bool GetInput()
-        {
-            if (_isInputDetected)
+            if (Keyboard.current.spaceKey.wasReleasedThisFrame)
             {
                 _isInputDetected = false;
-                return true;
             }
-            return false;
         }
 
         public virtual void SetDialog(DialogSO data)

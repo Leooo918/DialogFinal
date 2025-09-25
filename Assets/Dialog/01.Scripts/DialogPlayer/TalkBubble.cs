@@ -7,10 +7,10 @@ namespace Dialog
 {
     public class TalkBubble : MonoBehaviour
     {
-        [SerializeField] private TMP_AnimationPlayer _contentText;
+        [SerializeField] private TMP_TagableTextReader _contentText;
         public event Action OnContentOverEvent;
 
-        public TMP_AnimationPlayer ContentTextMeshPro => _contentText;
+        public TMP_TagableTextReader ContentTextMeshPro => _contentText;
 
         public bool IsEnable { get; private set; }
 

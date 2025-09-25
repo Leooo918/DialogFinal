@@ -13,7 +13,7 @@ namespace Dialog.Tag
 
         [HideInInspector] public string tag;
 
-        public abstract void ApplyEffort(CharacterData characterDatas, TMP_AnimationPlayer player);
+        public abstract void ApplyEffort(CharacterData characterDatas);
         public abstract TextTag Instantiate();
     }
 }

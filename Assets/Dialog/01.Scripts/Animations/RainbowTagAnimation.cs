@@ -13,7 +13,7 @@ namespace Dialog
         public RainbowTagAnimation()
         {
             _timing = AnimTiming.Update;
-            tagType = TagEnum.Rainbow;
+            tagType = TagType.Rainbow;
             _checkEndPos = true;
 
             //무지개당ㅎㅎ

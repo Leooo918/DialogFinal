@@ -1,4 +1,3 @@
-using UnityEditor.U2D.Animation;
 using UnityEngine;
 
 namespace Dialog.Tag
@@ -7,16 +6,15 @@ namespace Dialog.Tag
     {
         public float power;
 
-        public override void ApplyEffort(CharacterData characterData, TMP_AnimationPlayer player)
+        public override void ApplyEffort(CharacterData characterData)
         {
             if (characterData.isVisible == false) return;
 
+            float x = Mathf.Sin((characterData.timer) * 62.8f) * power;
+            float y = Mathf.Cos((characterData.timer) * 40f) * power;
             for (int i = 0; i < characterData.current.positions.Length; i++)
             {
                 Vector3 origin = characterData.source.positions[i];
-
-                float x = Mathf.Sin((Time.time + i) * 62.8f) * power;
-                float y = Mathf.Cos((Time.time + i) * 40f) * power;
                 characterData.current.positions[i] = origin + new Vector3(x, y, 0);
             }
         }

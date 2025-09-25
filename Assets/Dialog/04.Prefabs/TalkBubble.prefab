@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 8115476942047945982}
   - component: {fileID: 2561519743522278598}
   - component: {fileID: 1360498267413688449}
+  - component: {fileID: 2450509795953585547}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -143,8 +144,8 @@ MonoBehaviour:
   m_text: "\uC559\uAE30\uBAA8\uB531 \uC559\uAE30\uBAA8\uB531 \uC559\uAE30\uBAA8\uB531
     \uC559\uAE30\uBAA8\uB531 \uC559\uAE30\uBAA8\uB531 \uC559\uAE30\uBAA8\uB531 \uC559\uAE30\uBAA8\uB531 "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9ef28595343db7b478bf7a4850fc5e8a, type: 2}
-  m_sharedMaterial: {fileID: -6130751252363631259, guid: 9ef28595343db7b478bf7a4850fc5e8a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -212,6 +213,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2450509795953585547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493463867726289324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e333c31beb43c56429a6899562a88075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
 --- !u!1 &4195045070109463117
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +357,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &6700883684477898687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,7 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 161e2b260c734a0458548aca50e43572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _contentText: {fileID: 1360498267413688449}
+  _contentText: {fileID: 2450509795953585547}
 --- !u!1 &6792231469375972258
 GameObject:
   m_ObjectHideFlags: 0
