@@ -15,3 +15,5 @@ MonoBehaviour:
   tagList:
   - {fileID: 11400000, guid: 63c52b79c0dc22f43869a644ecd441ec, type: 2}
   - {fileID: 11400000, guid: 32a93bb6816f78148b5b94c20c391f9e, type: 2}
+  - {fileID: 11400000, guid: 896213485d9fa5b448e0fe256dadf4e2, type: 2}
+  - {fileID: 11400000, guid: ba9e98ac2d66ebe40b8b734a2d9e1425, type: 2}

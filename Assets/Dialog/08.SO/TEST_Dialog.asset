@@ -40,13 +40,15 @@ MonoBehaviour:
       data:
         startIndex: 0
         endIndex: 5
+        calcurateEndIndex: 1
         tag: shake
-        power: 0.5
+        power: 2
     - rid: 1995755942420938844
       type: {class: ShakeAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
       data:
         startIndex: 0
         endIndex: 3
+        calcurateEndIndex: 1
         tag: shake
         power: 2
 --- !u!114 &-6515531102020398469
@@ -62,11 +64,11 @@ MonoBehaviour:
   m_Name: IngameNodeSO
   m_EditorClassIdentifier: 
   guid: 658eadadc9e868543a51e07b5f70b40b
-  position: {x: 781, y: 57.420006}
+  position: {x: 781, y: 53.92}
   isFirstNode: 0
   nodeType: 1
   animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
-  reader: {fileID: 0}
+  reader: {fileID: 11400000, guid: 24df2bcdafcd9dc429b1429e3e0a8fbc, type: 2}
   text:
     text: "<size>\uC548\uB155?!"
     parsedText: "\uC548\uB155?!"
@@ -81,6 +83,7 @@ MonoBehaviour:
       data:
         startIndex: 0
         endIndex: 4
+        calcurateEndIndex: 1
         tag: size
         duration: 0.2
         amplitude: -1
@@ -97,7 +100,7 @@ MonoBehaviour:
   m_Name: IngameNodeSO
   m_EditorClassIdentifier: 
   guid: b094ec729e4ca8448b36b350b3cc40c7
-  position: {x: 781, y: 155.3745}
+  position: {x: 781, y: 155.5}
   isFirstNode: 0
   nodeType: 1
   animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
@@ -116,6 +119,7 @@ MonoBehaviour:
       data:
         startIndex: 0
         endIndex: 12
+        calcurateEndIndex: 1
         tag: size
         duration: 0.2
         amplitude: -1
@@ -132,27 +136,67 @@ MonoBehaviour:
   m_Name: IngameNodeSO
   m_EditorClassIdentifier: 
   guid: 787f419d960e8f848ae3e976b1c56072
-  position: {x: -6, y: 144}
+  position: {x: -28.5, y: 144}
   isFirstNode: 1
   nodeType: 1
   animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
   reader: {fileID: 11400000, guid: 096a0d56132461f4ba048bdc974149d7, type: 2}
   text:
-    text: "<shake>\uD754\uB4E4\uC5B4~ \uD754\uB4E4\uC5B4!"
+    text: "<size><rainbow>\uD754\uB4E4\uC5B4~ \uD754\uB4E4\uC5B4!"
     parsedText: "\uD754\uB4E4\uC5B4~ \uD754\uB4E4\uC5B4!"
     tagAnimations:
-    - rid: 1995755942420938838
+    - rid: 1995756017117560936
+    - rid: 1995756017117560937
   linkedNode: {fileID: 8853913747068004852}
   references:
     version: 2
     RefIds:
-    - rid: 1995755942420938838
-      type: {class: ShakeAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
+    - rid: 1995756017117560936
+      type: {class: RainbowAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
       data:
         startIndex: 0
         endIndex: 9
-        tag: shake
-        power: 5
+        calcurateEndIndex: 1
+        tag: rainbow
+        gradient:
+          serializedVersion: 2
+          key0: {r: 1, g: 0, b: 0, a: 1}
+          key1: {r: 0.90588236, g: 0.85143435, b: 0, a: 1}
+          key2: {r: 0.020166544, g: 0.42556217, b: 1, a: 0}
+          key3: {r: 0.62919617, g: 0, b: 1, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 18890
+          ctime2: 48862
+          ctime3: 65535
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: -1
+          m_NumColorKeys: 4
+          m_NumAlphaKeys: 2
+    - rid: 1995756017117560937
+      type: {class: SizeAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
+      data:
+        startIndex: 0
+        endIndex: 9
+        calcurateEndIndex: 1
+        tag: size
+        duration: 0.2
+        amplitude: -1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,25 +231,26 @@ MonoBehaviour:
   m_Name: IngameNodeSO
   m_EditorClassIdentifier: 
   guid: 4e944d71e3634894782802f27e14d2e7
-  position: {x: 232.5, y: 144}
+  position: {x: 233, y: 144}
   isFirstNode: 0
   nodeType: 1
   animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
   reader: {fileID: 11400000, guid: 24df2bcdafcd9dc429b1429e3e0a8fbc, type: 2}
   text:
-    text: "<size>\uC544\uBB34 \uB9D0\uD558\uAE30"
+    text: "<wobble>\uC544\uBB34 \uB9D0\uD558\uAE30"
     parsedText: "\uC544\uBB34 \uB9D0\uD558\uAE30"
     tagAnimations:
-    - rid: 1995755942420938841
+    - rid: 1995756017117560920
   linkedNode: {fileID: -7730358341324731563}
   references:
     version: 2
     RefIds:
-    - rid: 1995755942420938841
-      type: {class: SizeAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
+    - rid: 1995756017117560920
+      type: {class: WobbleAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
       data:
         startIndex: 0
         endIndex: 6
-        tag: size
-        duration: 0.2
-        amplitude: -1
+        calcurateEndIndex: 1
+        tag: wobble
+        power: 10
+        speed: 5

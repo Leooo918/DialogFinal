@@ -134,10 +134,10 @@ namespace Dialog.Tag
 
                 for (int j = 0; j < 4; ++j)
                 {
-                    data.source.positions[j] = vertices[vertextIndex + j];
+                    data.Source.positions[j] = vertices[vertextIndex + j];
                     data.current.positions[j] = vertices[vertextIndex + j];
 
-                    data.source.colors[j] = colors[vertextIndex + j];
+                    data.Source.colors[j] = colors[vertextIndex + j];
                     data.current.colors[j] = colors[vertextIndex + j];
                 }
 

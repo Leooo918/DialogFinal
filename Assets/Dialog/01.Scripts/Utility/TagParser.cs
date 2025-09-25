@@ -8,150 +8,6 @@ namespace Dialog
 {
     public static class TagParser
     {
-        public static List<TagAnimation> ParseAnimation(ref string txt)
-        {
-            TagStruct tag;
-            List<TagAnimation> animations = new List<TagAnimation>();
-
-            if (string.IsNullOrEmpty(txt)) return animations;
-
-            while (true)
-            {
-                tag = FindTag(txt);
-                if (tag == null) break;
-
-                try
-                {
-                    string sName = $"Dialog.{tag.tag.ToString()}TagAnimation";
-                    Type t = Type.GetType(sName);
-                    TagAnimation tagAnim = Activator.CreateInstance(t) as TagAnimation;
-
-                    //앞에서 문자열이 짧아졌으니 그만큼 뒤에서 줄여줘야함
-                    int startTagSize = tag.endPos - tag.stratPos + 1;
-                    txt = txt.Remove(tag.stratPos, startTagSize);
-                    foreach (var animation in animations)
-                    {
-                        //뒤에서 부터 찾아서 무조건 더 큼
-                        animation.animStartPos -= startTagSize;
-                    }
-
-                    tagAnim.animStartPos = tag.stratPos;
-                    tagAnim.SetParameter(tag.factors);
-                    tagAnim.animLength = 0;
-
-                    if (tagAnim.CheckEndPos)
-                    {
-                        string tagEndTxt = $"</{tag.tag.ToString()}>";
-                        int endPos = FindTagEndPos(txt, tagEndTxt, tag.stratPos);
-
-                        if (endPos == -1)
-                            endPos = txt.Length;
-                        else
-                            txt = txt.Remove(endPos, tagEndTxt.Length);
-
-                        tagAnim.animLength = endPos - tag.stratPos;
-
-                        foreach (var animation in animations)
-                        {
-                            if (animation.animStartPos >= endPos)
-                                animation.animStartPos -= tagEndTxt.Length;
-                        }
-                    }
-
-                    animations.Add(tagAnim);
-                }
-                catch (Exception e)
-                {
-                    Debug.LogException(e);
-                    Debug.Log($"애니메이션 이름도 제대로 확인 안하지 허~접 ♥");
-                }
-            }
-
-            List<ExcludeText> excluding = FindExcludeText(txt);
-
-            animations.ForEach(anim =>
-            {
-                int lengthMinus = 0;
-                int startPosMinus = 0;
-                int animEndPos = anim.animStartPos + anim.animLength;
-
-                excluding.ForEach(ex =>
-                {
-                    int tagLength = ex.endPos - ex.startPos + 1;
-
-                    if (anim.animStartPos >= ex.endPos)
-                    {
-                        startPosMinus += tagLength;
-                    }
-
-                    if (ex.startPos >= anim.animStartPos && ex.endPos <= animEndPos)
-                    {
-                        lengthMinus += tagLength;
-                    }
-                });
-
-                anim.animLength -= lengthMinus;
-                anim.animStartPos -= startPosMinus;
-            });
-
-            return animations;
-        }
-
-        private static TagStruct FindTag(string txt)
-        {
-            //뒤에서 부터 찾기
-            for (int i = txt.Length - 1; i >= 0; i--)
-            {
-                //< 문자를 찾아서
-                if (txt[i] == '<')
-                {
-                    //끝내는 테그 </ 인지 확인해주고
-                    if (i + 1 < txt.Length && txt[i + 1] == '/') continue;
-
-                    int endPos = -1;
-                    StringBuilder enumSb = new StringBuilder();
-                    StringBuilder factorSb = new StringBuilder();
-
-                    //enum과 factor찾는 부분
-                    for (int j = i + 1; j < txt.Length; j++)
-                    {
-                        // = 은 인자를 받기 시작한다는 뜻
-                        if (txt[j] == '=')
-                        {
-                            //인자를 받아주고 ( =은 미포함 해야함 )
-                            for (int k = j + 1; k < txt.Length; k++)
-                            {
-                                //인자를 다 받은 다음 끝 위치 기억
-                                if (txt[k] == '>')
-                                {
-                                    endPos = k;
-                                    break;
-                                }
-                                factorSb.Append(txt[k]);
-                            }
-                            break;
-                        }
-                        else if (txt[j] == '>')     //끝이 나왔을 때 끝 위치 기억해주고 enum과 factor받는거 끝내
-                        {
-                            endPos = j;
-                            break;
-                        }
-
-                        enumSb.Append(txt[j]);
-                    }
-
-                    //끝이 있고, Enum이 있다면
-                    if (Enum.TryParse(enumSb.ToString(), out TagType tag) && endPos > -1)
-                    {
-                        TagStruct tagStruct = new TagStruct(tag, i, endPos, factorSb.ToString());
-                        return tagStruct;
-                    }
-                }
-            }
-
-            return null;
-        }
-
         public static List<TextTag> ParseAnimation(ref string txt, List<TextTagSO> textAnimationList)
         {
             TextTag animation;
@@ -175,26 +31,37 @@ namespace Dialog
                         //뒤에서 부터 찾아서 무조건 더 큼
                         TextTag animInfo = animations[i];
                         animInfo.startIndex -= startTagSize;
+                        animInfo.endIndex -= startTagSize;
                         animations[i] = animInfo;
                     }
 
-                    string tagEndText = $"</{animation.tag}>";
-                    int endPos = FindTagEndPos(txt, tagEndText, animation.startIndex);
-                    animation.endIndex = endPos;
-
-                    if (endPos == -1)
+                    if (animation.calcurateEndIndex)
                     {
-                        endPos = txt.Length;
-                        animation.endIndex = txt.Length;
+                        string tagEndText = $"</{animation.tag}>";
+                        int endPos = FindTagEndPos(txt, tagEndText, animation.startIndex);
+                        animation.endIndex = endPos;
+
+                        //endPos를 못 찾으면 끝까지
+                        if (endPos == -1)
+                        {
+                            endPos = txt.Length;
+                            animation.endIndex = txt.Length;
+                        }
+                        else
+                        {
+                            txt = txt.Remove(endPos, tagEndText.Length);
+
+                            for (int i = 0; i < animations.Count; i++)
+                            {
+                                TextTag animInfo = animations[i];
+                                if (animInfo.startIndex >= endPos) animInfo.startIndex -= tagEndText.Length;
+                                if (animInfo.endIndex >= endPos) animInfo.endIndex -= tagEndText.Length;
+                            }
+                        }
                     }
-                    else txt = txt.Remove(endPos, tagEndText.Length);
-
-                    for (int i = 0; i < animations.Count; i++)
+                    else
                     {
-                        //뒤에서 부터 찾아서 무조건 더 큼
-                        TextTag animInfo = animations[i];
-                        if (animInfo.startIndex >= endPos) animInfo.startIndex -= tagEndText.Length;
-                        animations[i] = animInfo;
+                        animation.endIndex = animation.startIndex;
                     }
 
                     //animationInfo.animSO.SetParameter(animationInfo.param);
@@ -234,9 +101,9 @@ namespace Dialog
             return animations;
         }
 
+        //뒤에서 부터 찾기
         private static TextTag FindTag(string txt, List<TextTagSO> textAnimationList)
         {
-            //뒤에서 부터 찾기
             for (int i = txt.Length - 1; i >= 0; i--)
             {
                 //< 문자를 찾아서
@@ -246,45 +113,28 @@ namespace Dialog
                     if (i + 1 < txt.Length && txt[i + 1] == '/') continue;
 
                     int endPos = -1;
-                    StringBuilder enumSb = new StringBuilder();
-                    StringBuilder factorSb = new StringBuilder();
+                    StringBuilder tagSb = new StringBuilder();
 
-                    //enum과 factor찾는 부분
                     for (int j = i + 1; j < txt.Length; j++)
                     {
-                        // = 은 인자를 받기 시작한다는 뜻
-                        if (txt[j] == '=')
-                        {
-                            //인자를 받아주고 ( =은 미포함 해야함 )
-                            for (int k = j + 1; k < txt.Length; k++)
-                            {
-                                //인자를 다 받은 다음 끝 위치 기억
-                                if (txt[k] == '>')
-                                {
-                                    endPos = k;
-                                    break;
-                                }
-                                factorSb.Append(txt[k]);
-                            }
-                            break;
-                        }
-                        else if (txt[j] == '>')     //끝이 나왔을 때 끝 위치 기억해주고 enum과 factor받는거 끝내
+                        if (txt[j] == '>')     //끝이 나왔을 때 끝 위치 기억해주고 enum과 factor받는거 끝내
                         {
                             endPos = j;
                             break;
                         }
 
-                        enumSb.Append(txt[j]);
+                        tagSb.Append(txt[j]);
                     }
 
-                    TextTagSO animSO = textAnimationList.Find(animation => animation.TagID == enumSb.ToString());
+                    string tagStr = tagSb.ToString();
+                    TextTagSO animSO = textAnimationList.Find(animation => animation.TagID == tagStr);
                     if (animSO != null && endPos > -1)
                     {
                         TextTag animInfo = animSO.textAnimation.Instantiate();
                         animInfo.textGuid = Guid.NewGuid();
                         animInfo.startIndex = i;
                         animInfo.endIndex = endPos;
-                        animInfo.tag = enumSb.ToString();
+                        animInfo.tag = tagStr;
 
                         return animInfo;
                     }
@@ -294,6 +144,7 @@ namespace Dialog
             return null;
         }
 
+        //TMP 예외 태그 처리
         private static List<ExcludeText> FindExcludeText(string txt)
         {
             List<ExcludeText> taglist = new List<ExcludeText>();
@@ -305,7 +156,8 @@ namespace Dialog
                 if (txt[i] == '<')
                 {
                     int endPos = -1;
-                    StringBuilder enumSb = new StringBuilder();
+                    string enumTxt = "";
+                    string factor = "";
 
                     if (i + 1 < txt.Length && txt[i + 1] == '/')
                     {
@@ -317,10 +169,10 @@ namespace Dialog
                                 break;
                             }
 
-                            enumSb.Append(txt[j]);
+                            enumTxt += txt[j];
                         }
 
-                        if (Enum.TryParse(enumSb.ToString(), out TMPTag t) && endPos > -1)
+                        if (Enum.TryParse(enumTxt, out TMPTag t) && endPos > -1)
                         {
                             ExcludeText tagStruct = new ExcludeText(i, endPos);
                             taglist.Add(tagStruct);
@@ -345,6 +197,7 @@ namespace Dialog
                                     endPos = k;
                                     break;
                                 }
+                                factor += txt[k];
                             }
                             break;
                         }
@@ -354,11 +207,11 @@ namespace Dialog
                             break;
                         }
 
-                        enumSb.Append(txt[j]);
+                        enumTxt += txt[j];
                     }
 
                     //끝이 있고, Enum이 있다면
-                    if (Enum.TryParse(enumSb.ToString(), out TMPTag tag) && endPos > -1)
+                    if (Enum.TryParse(enumTxt, out TMPTag tag) && endPos > -1)
                     {
                         ExcludeText tagStruct = new ExcludeText(i, endPos);
                         taglist.Add(tagStruct);
@@ -380,21 +233,6 @@ namespace Dialog
         }
     }
 
-    public class TagStruct
-    {
-        public TagType tag;
-        public int stratPos, endPos;
-        public string factors;
-
-        public TagStruct(TagType tag, int stratPos, int endPos, string factors)
-        {
-            this.tag = tag;
-            this.stratPos = stratPos;
-            this.endPos = endPos;
-            this.factors = factors;
-        }
-    }
-
     public class ExcludeText
     {
         public int startPos, endPos;
@@ -404,5 +242,16 @@ namespace Dialog
             this.startPos = startPos;
             this.endPos = endPos;
         }
+    }
+    public enum TMPTag
+    {
+        color,
+        sup,
+        sub,
+        mark,
+        size,
+        b,
+        u,
+        s,
     }
 }

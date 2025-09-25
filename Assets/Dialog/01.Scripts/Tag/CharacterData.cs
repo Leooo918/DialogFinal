@@ -11,8 +11,10 @@ namespace Dialog.Tag
         public bool isVisible;
         public float timer;
 
-        public MeshData source;
         public MeshData current;
+        public MeshData source;
+
+        public MeshData Source => source;
 
         public CharacterData(bool isContainVertex)
         {

@@ -11,13 +11,14 @@ namespace Dialog.Tag
         public override void ApplyEffort(CharacterData characterData)
         {
             if (characterData.isVisible == false) return;
-
-            Vector3 middlePos = (characterData.source.positions[0] + characterData.source.positions[2]) / 2f;
             float progress = characterData.timer / duration;
+            if (progress > 1) return;
+
+            Vector3 middlePos = (characterData.Source.positions[0] + characterData.Source.positions[2]) / 2f;
 
             for (int i = 0; i < characterData.current.positions.Length; i++)
             {
-                Vector3 origin = characterData.source.positions[i];
+                Vector3 origin = characterData.Source.positions[i];
 
                 characterData.current.positions[i] = Vector3.LerpUnclamped(origin, middlePos,
                     Mathf.Lerp(amplitude, 0, progress));

@@ -11,6 +11,7 @@ namespace Dialog.Tag
         [ReadOnly] public int endIndex;
         public int AnimationLength => (endIndex - startIndex);
 
+        [HideInInspector] public bool calcurateEndIndex = true;
         [HideInInspector] public string tag;
 
         public abstract void ApplyEffort(CharacterData characterDatas);
