@@ -144,16 +144,18 @@ namespace Dialog.Tag
                 _characterDatas.Add(data);
             }
 
-            _textAnimInfos.ForEach(animation =>
-            {
-                //if(animation is IGameFlowTag gameFlow)
-                //    gameFlow.SetData();
-            });
+            //_textAnimInfos.ForEach(animation =>
+            //{
+            //    //if(animation is IGameFlowTag gameFlow)
+            //    //    gameFlow.SetData();
+            //});
 
             _isTextInit = true;
         }
 
         #endregion
+
+        #region DisableText
 
         //모든 텍스트 투명처리
         public void DisableText()
@@ -173,5 +175,7 @@ namespace Dialog.Tag
             CharacterData data = _characterDatas[_tmp.maxVisibleCharacters++];
             if (data.isContainVertex) data.isVisible = true;
         }
+
+        #endregion
     }
 }

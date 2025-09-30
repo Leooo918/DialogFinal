@@ -5,13 +5,15 @@ namespace Dialog.Tag
     public class ShakeAnimation : TextTag
     {
         public float power;
+        private const float ShakeFrequencyX = Mathf.PI * 20f;
+        private const float ShakeFrequencyY = 40f;
 
         public override void ApplyEffort(CharacterData characterData)
         {
             if (characterData.isVisible == false) return;
 
-            float x = Mathf.Sin(characterData.timer * 62.8f) * power;
-            float y = Mathf.Cos(characterData.timer * 40f) * power;
+            float x = Mathf.Sin(characterData.timer * ShakeFrequencyX) * power;
+            float y = Mathf.Cos(characterData.timer * ShakeFrequencyY) * power;
             for (int i = 0; i < characterData.current.positions.Length; i++)
             {
                 Vector3 origin = characterData.Source.positions[i];

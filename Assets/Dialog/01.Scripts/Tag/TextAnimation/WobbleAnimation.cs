@@ -10,10 +10,12 @@ namespace Dialog.Tag
 
         public override void ApplyEffort(CharacterData characterDatas)
         {
+            float offset = characterDatas.Source.positions[0].x * 0.01f;
+
             for (int i = 0; i < 4; ++i)
             {
                 var orig = characterDatas.Source.positions[i];
-                characterDatas.current.positions[i] = orig + new Vector3(0, Mathf.Sin(characterDatas.timer * speed + orig.x * 0.01f) * power, 0);
+                characterDatas.current.positions[i] = orig + new Vector3(0, Mathf.Sin(characterDatas.timer * speed + offset) * power, 0);
             }
         }
 

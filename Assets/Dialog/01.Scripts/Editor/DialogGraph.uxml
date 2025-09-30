@@ -3,7 +3,7 @@
     <Dialog.SplitView name="SplitView" fixed-pane-initial-dimension="200">
         <ui:VisualElement name="InspectorView" style="flex-shrink: 0; background-color: rgb(32, 32, 32);">
             <Dialog.SplitView orientation="Vertical" name="inner-split-view" fixed-pane-initial-dimension="1000">
-                <Dialog.InspectorView name="inspector-view" focusable="true" />
+                <Dialog.InspectorView name="inspector-view" focusable="true" style="margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;" />
                 <Dialog.InspectorView name="condition-view" />
             </Dialog.SplitView>
         </ui:VisualElement>
