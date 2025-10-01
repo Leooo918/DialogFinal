@@ -56,6 +56,7 @@ namespace Dialog
     public class Option
     {
         public TagableText optionTxt;
+        public TextOutputMethodSO textOutputMethod;
         [HideInInspector] public NodeSO nextNode;
 
         public Option()

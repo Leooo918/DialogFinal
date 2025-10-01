@@ -142,10 +142,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\uC559\uAE30\uBAA8\uB531 \uC559\uAE30\uBAA8\uB531 \uC559\uAE30\uBAA8\uB531
-    \uC559\uAE30\uBAA8\uB531 \uC559\uAE30\uBAA8\uB531 \uC559\uAE30\uBAA8\uB531 \uC559\uAE30\uBAA8\uB531 "
+    \uC559\uAE30\uBAA8\uB531\n\uC559\uAE30\uBAA8\uB531 \uC559\uAE30\uBAA8\uB531 \uC559\uAE30\uBAA8\uB531 "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a4c4c4a7727f74c458f7201e0d838cb0, type: 2}
+  m_sharedMaterial: {fileID: 3016558673524554467, guid: a4c4c4a7727f74c458f7201e0d838cb0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -225,7 +225,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e333c31beb43c56429a6899562a88075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
+  _animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
+  _debugText:
+    text: 
+    parsedText: 
+    tagAnimations: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &4195045070109463117
 GameObject:
   m_ObjectHideFlags: 0

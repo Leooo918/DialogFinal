@@ -12,8 +12,10 @@ namespace Dialog.Tag
         {
             if (characterData.isVisible == false) return;
 
-            float x = Mathf.Sin(characterData.timer * ShakeFrequencyX) * power;
-            float y = Mathf.Cos(characterData.timer * ShakeFrequencyY) * power;
+            float offset = characterData.Source.positions[0].x;
+
+            float x = Mathf.Sin((characterData.timer + offset) * ShakeFrequencyX) * power;
+            float y = Mathf.Cos((characterData.timer + offset) * ShakeFrequencyY) * power;
             for (int i = 0; i < characterData.current.positions.Length; i++)
             {
                 Vector3 origin = characterData.Source.positions[i];

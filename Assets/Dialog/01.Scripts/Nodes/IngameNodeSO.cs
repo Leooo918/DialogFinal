@@ -8,6 +8,8 @@ namespace Dialog
     {
         public ActorSO reader;
         public TagableText text;
+        [Space]
+        [SerializeReference] public TextOutputMethodSO textOutputMethod;
 
         [HideInInspector] public NodeSO linkedNode;
 
@@ -19,6 +21,7 @@ namespace Dialog
         {
             guid = "";
             reader = defaultPlayerActor;
+            textOutputMethod = option.textOutputMethod;
             text = new TagableText(option.optionTxt.GetFullText());
             linkedNode = option.nextNode;
 

@@ -675,10 +675,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1493463867726289324, guid: e9154aa57ffd70b4285fbdb6cb6702dc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 721746738}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9154aa57ffd70b4285fbdb6cb6702dc, type: 3}
 --- !u!224 &721746735 stripped
 RectTransform:
@@ -694,23 +691,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 161e2b260c734a0458548aca50e43572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &721746737 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1493463867726289324, guid: e9154aa57ffd70b4285fbdb6cb6702dc, type: 3}
-  m_PrefabInstance: {fileID: 721746734}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &721746738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 721746737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c878ca21a2101b44d9619103e4eefe7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &732853065 stripped
@@ -730,7 +710,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e333c31beb43c56429a6899562a88075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
+  _animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
+  _debugText:
+    text: 
+    parsedText: 
+    tagAnimations: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &1146214687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -886,19 +873,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1493463867726289324, guid: e9154aa57ffd70b4285fbdb6cb6702dc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1146214691}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9154aa57ffd70b4285fbdb6cb6702dc, type: 3}
 --- !u!224 &1146214688 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4685377318463013658, guid: e9154aa57ffd70b4285fbdb6cb6702dc, type: 3}
-  m_PrefabInstance: {fileID: 1146214687}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1146214689 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1493463867726289324, guid: e9154aa57ffd70b4285fbdb6cb6702dc, type: 3}
   m_PrefabInstance: {fileID: 1146214687}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1146214690 stripped
@@ -910,18 +889,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 161e2b260c734a0458548aca50e43572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1146214691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1146214689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c878ca21a2101b44d9619103e4eefe7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1323648954
@@ -1560,7 +1527,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e333c31beb43c56429a6899562a88075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
+  _animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
+  _debugText:
+    text: "<shake>\uBC0D<shake>"
+    parsedText: "\uBC0D"
+    tagAnimations:
+    - rid: 1995756131424927745
+    - rid: 1995756131424927744
+  references:
+    version: 2
+    RefIds:
+    - rid: 1995756131424927744
+      type: {class: ShakeAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
+      data:
+        startIndex: 0
+        endIndex: 1
+        calcurateEndIndex: 1
+        tag: shake
+        power: 5
+    - rid: 1995756131424927745
+      type: {class: ShakeAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
+      data:
+        startIndex: 1
+        endIndex: 1
+        calcurateEndIndex: 1
+        tag: shake
+        power: 5
 --- !u!1 &2086210053
 GameObject:
   m_ObjectHideFlags: 0

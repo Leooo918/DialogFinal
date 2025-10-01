@@ -1,2 +1,15 @@
 fileFormatVersion: 2
 guid: 4e7870a4eed172848bd52da19d69a590
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - animationGruop: {instanceID: 0}
+  - reader: {instanceID: 0}
+  - textOutputMethod: {fileID: 11400000, guid: c5b80e1ce6d66154f8479472a7579233, type: 2}
+  - linkedNode: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

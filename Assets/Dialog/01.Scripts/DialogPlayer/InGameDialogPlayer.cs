@@ -1,6 +1,7 @@
 using Dialog.Tag;
 using System;
 using System.Collections;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -57,18 +58,14 @@ namespace Dialog
             animationPlayer.SetText(node.text);
             yield return null;
             animationPlayer.DisableText();
-            _isReadingDialog = true;
-
-            while (animationPlayer.maxVisibleCharacters < animationPlayer.textLength)
-            {
-                animationPlayer.EnableSingleText();
-                if (animationPlayer.GetText(animationPlayer.maxVisibleCharacters - 1) == ' ') continue;
-
-                yield return new WaitForSeconds(_textOutDelay);
-                yield return new WaitUntil(() => stopReading == false);
-            }
-
+            node.textOutputMethod.OnCompleteReading += OnCompleteRead;
+            _currentActor?.personalTalkBubble.ContentTextMeshPro.StartReading(node.textOutputMethod);
             _nextNode = node.linkedNode;
+        }
+
+        private void OnCompleteRead()
+        {
+            if(_curReadingNode is IngameNodeSO ingame) ingame.textOutputMethod.OnCompleteReading -= OnCompleteRead;
             StartCoroutine(WaitNodeRoutine(() => _isInputDetected, _currentActor.OnCompleteNode));
         }
 

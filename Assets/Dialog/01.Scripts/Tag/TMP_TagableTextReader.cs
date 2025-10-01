@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Dialog.Tag
 {
@@ -10,7 +11,8 @@ namespace Dialog.Tag
     public partial class TMP_TagableTextReader : MonoBehaviour
     {
         public event Action onCompleteReadLine;
-        [SerializeField] private TextTagGroupSO animationGruop;
+        [SerializeField] private TextTagGroupSO _animationGruop;
+        [SerializeField] private TagableText _debugText;
 
         private TextMeshProUGUI _tmp;
         private TMP_TextInfo _tmpTextInfo;
@@ -21,6 +23,9 @@ namespace Dialog.Tag
         private string _text;
         private bool _isTextInit = false;
 
+        private bool _isReadingText = false;
+        private TextOutputMethodSO _currentTextOutputMethod;
+
         public int textLength => _tmpTextInfo.characterCount;
         public int maxVisibleCharacters => _tmp.maxVisibleCharacters;
 
@@ -30,12 +35,31 @@ namespace Dialog.Tag
             _tmpTextInfo = _tmp.textInfo;
         }
 
-        private void LateUpdate()
+        //For Debugging
+        private void OnValidate()
         {
-            UpdateText();
+            _debugText?.ParseTag(_animationGruop);
         }
 
-        public char GetText(int index) => _text[index];
+        //For Debugging
+        private void Update()
+        {
+            if(Keyboard.current.lKey.wasPressedThisFrame)
+            {
+                SetText(_debugText);
+            }
+            if(Keyboard.current.kKey.wasPressedThisFrame)
+            {
+                EnableAllText();
+            }
+        }
+
+
+        private void LateUpdate()
+        {
+            ReadText();
+            UpdateText();
+        }
 
         private void UpdateText()
         {
@@ -89,6 +113,35 @@ namespace Dialog.Tag
             }
         }
 
+        public char GetText(int index) => _text[index];
+
+        #region TextReading
+
+        public void StartReading(TextOutputMethodSO textOutput)
+        {
+            _isReadingText = true;
+            _currentTextOutputMethod = textOutput;
+            _currentTextOutputMethod.OnReadText += EnableSingleText;
+        }
+
+        public void ReadText()
+        {
+            if (_isReadingText == false || _currentTextOutputMethod == null) return;
+
+            if (_currentTextOutputMethod.ReadText(_text, _tmp.maxVisibleCharacters))
+            {
+                _isReadingText = false;
+                _currentTextOutputMethod.OnReadText -= EnableSingleText;
+            }
+        }
+
+        public void SkipReadingText()
+        {
+            EnableAllText();
+        }
+
+
+        #endregion
 
         #region SETTEXT
 
@@ -123,13 +176,13 @@ namespace Dialog.Tag
             yield return null;
 
             _characterDatas = new List<CharacterData>();
-            for (int i = 0; i < _tmp.textInfo.characterCount; ++i)
+            for (int i = 0; i < _tmpTextInfo.characterCount; ++i)
             {
-                TMP_CharacterInfo charcterInfo = _tmp.textInfo.characterInfo[i];
+                TMP_CharacterInfo charcterInfo = _tmpTextInfo.characterInfo[i];
 
                 CharacterData data = new CharacterData(charcterInfo.isVisible);
-                Vector3[] vertices = _tmp.textInfo.meshInfo[charcterInfo.materialReferenceIndex].vertices;
-                Color32[] colors = _tmp.textInfo.meshInfo[charcterInfo.materialReferenceIndex].colors32;
+                Vector3[] vertices = _tmpTextInfo.meshInfo[charcterInfo.materialReferenceIndex].vertices;
+                Color32[] colors = _tmpTextInfo.meshInfo[charcterInfo.materialReferenceIndex].colors32;
                 int vertextIndex = charcterInfo.vertexIndex;
 
                 for (int j = 0; j < 4; ++j)
@@ -174,6 +227,15 @@ namespace Dialog.Tag
 
             CharacterData data = _characterDatas[_tmp.maxVisibleCharacters++];
             if (data.isContainVertex) data.isVisible = true;
+        }
+
+        public void EnableAllText()
+        {
+            for(int i = 0; i < _characterDatas.Count; ++i)
+            {
+                if (_characterDatas[i].isContainVertex == false) continue;
+                _characterDatas[i].isVisible = true;
+            }
         }
 
         #endregion
