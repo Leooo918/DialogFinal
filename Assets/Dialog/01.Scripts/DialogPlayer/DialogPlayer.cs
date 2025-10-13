@@ -64,13 +64,18 @@ namespace Dialog
         {
             if (Keyboard.current.spaceKey.wasPressedThisFrame)
             {
-                _isInputDetected = true;
+                if (_isReadingDialog) SkipReading();
+                else _isInputDetected = true;
             }
-            if (Keyboard.current.spaceKey.wasReleasedThisFrame)
+            if (_isReadingDialog == false && Keyboard.current.spaceKey.wasReleasedThisFrame)
             {
                 _isInputDetected = false;
             }
+
+            if (_isReadingDialog) _isInputDetected = false;
         }
+
+        protected virtual void SkipReading() { }
 
         public virtual void SetDialog(DialogSO data)
         {

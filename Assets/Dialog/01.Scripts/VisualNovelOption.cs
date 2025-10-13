@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Dialog.VisualNovel
+namespace Dialog
 {
     public class VisualNovelOption : MonoBehaviour
     {

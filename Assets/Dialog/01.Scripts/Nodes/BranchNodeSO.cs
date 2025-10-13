@@ -13,7 +13,7 @@ namespace Dialog
         public Action OnChangeCondition;
 
 
-        public override void OnEnable() { nodeType = DialogNodeType.IngameMode; }
+        public override void OnEnable() { nodeType = DialogNodeType.FlexMode; }
         private void OnValidate() { OnChangeCondition?.Invoke(); }
     }
 }

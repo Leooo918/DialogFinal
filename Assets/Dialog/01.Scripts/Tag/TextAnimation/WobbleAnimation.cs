@@ -5,8 +5,8 @@ namespace Dialog.Tag
 {
     public class WobbleAnimation : TextTag
     {
-        public float power;
-        public float speed;
+        public float power = 10;
+        public float speed = 10;
 
         public override void ApplyEffort(CharacterData characterDatas)
         {

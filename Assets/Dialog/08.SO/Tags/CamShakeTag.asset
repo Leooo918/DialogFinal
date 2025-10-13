@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af2b01a3a6e4ff489b18b9a21ef1744, type: 3}
+  m_Name: CamShakeTag
+  m_EditorClassIdentifier: 
+  TagID: cs
+  animationClassName: Dialog.Tag.CameraShakeEvent
+  textAnimation:
+    rid: 4199950851535536207
+  references:
+    version: 2
+    RefIds:
+    - rid: 4199950851535536207
+      type: {class: CameraShakeEvent, ns: Dialog.Tag, asm: Assembly-CSharp}
+      data:
+        startIndex: 0
+        endIndex: 0
+        calcurateEndIndex: 1
+        tag: 
+        shakePower: 10
+        shakeDuration: 0.2

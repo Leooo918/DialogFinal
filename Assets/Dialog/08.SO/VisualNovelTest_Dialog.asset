@@ -1,0 +1,228 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7742855683117034324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf12593a4a5d8247bdea87308ca2eb6, type: 3}
+  m_Name: OptionNodeSO
+  m_EditorClassIdentifier: 
+  guid: b4ad42ab9b8805b4abdf6e47af0b4aa9
+  position: {x: 673, y: 133.00002}
+  isFirstNode: 0
+  nodeType: 4
+  animationGroup: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
+  animationGroup: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
+  options:
+  - optionTxt:
+      text: "\uC774 \uB85C\uB9AC\uCF58 \uC8FD\uC5B4\uB77C!!!"
+      parsedText: "\uC774 \uB85C\uB9AC\uCF58 \uC8FD\uC5B4\uB77C!!!"
+      tagAnimations: []
+    textOutputMethod: {fileID: 0}
+    nextNode: {fileID: -1171904982446767441}
+  - optionTxt:
+      text: "\uC774 \uB85C\uB9AC\uCF58 \uC9C0\uC625\uC73C\uB85C \uAEBC\uC838\uB77C!!!"
+      parsedText: "\uC774 \uB85C\uB9AC\uCF58 \uC9C0\uC625\uC73C\uB85C \uAEBC\uC838\uB77C!!!"
+      tagAnimations: []
+    textOutputMethod: {fileID: 0}
+    nextNode: {fileID: -4956988681641013398}
+  optionPrefab: {fileID: -2199068703474868929, guid: f96be568de8eb164d8af3c30b3c615e7, type: 3}
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &-4956988681641013398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae87230921f86bd48b0751b6442b98eb, type: 3}
+  m_Name: VisualNovelNodeSO
+  m_EditorClassIdentifier: 
+  guid: 55880334f1422bc4d9616758c5018a6f
+  position: {x: 936, y: 278.255}
+  isFirstNode: 0
+  nodeType: 2
+  animationGroup: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
+  readerName:
+    text: "\uAE40\uB3D9\uB960"
+    parsedText: "\uAE40\uB3D9\uB960"
+    tagAnimations: []
+  contentName:
+    text: "\uB044\uC544\uC544\uC544\uC559"
+    parsedText: "\uB044\uC544\uC544\uC544\uC559"
+    tagAnimations: []
+  textOutputMethod: {fileID: 11400000, guid: c5b80e1ce6d66154f8479472a7579233, type: 2}
+  linkedNode: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &-1171904982446767441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae87230921f86bd48b0751b6442b98eb, type: 3}
+  m_Name: VisualNovelNodeSO
+  m_EditorClassIdentifier: 
+  guid: 94b5492f47d566542a1b1dbf92a530f6
+  position: {x: 936, y: 6.0000067}
+  isFirstNode: 0
+  nodeType: 2
+  animationGroup: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
+  readerName:
+    text: "\uAE40\uB3D9\uB960"
+    parsedText: "\uAE40\uB3D9\uB960"
+    tagAnimations: []
+  contentName:
+    text: "\uC73C\uC544\uC544\uC544\uC544\uC55C"
+    parsedText: "\uC73C\uC544\uC544\uC544\uC544\uC55C"
+    tagAnimations: []
+  textOutputMethod: {fileID: 11400000, guid: c5b80e1ce6d66154f8479472a7579233, type: 2}
+  linkedNode: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5428f57e6e1463b4b8d0636e183f2213, type: 3}
+  m_Name: VisualNovelTest_Dialog
+  m_EditorClassIdentifier: 
+  dialogMode: 2
+  animGroup: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
+  defaultPlayerActor: {fileID: 11400000, guid: 096a0d56132461f4ba048bdc974149d7, type: 2}
+  nodes:
+  - {fileID: 6024474461970530358}
+  - {fileID: 3071739612222912499}
+  - {fileID: -7742855683117034324}
+  - {fileID: -1171904982446767441}
+  - {fileID: -4956988681641013398}
+--- !u!114 &3071739612222912499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae87230921f86bd48b0751b6442b98eb, type: 3}
+  m_Name: VisualNovelNodeSO
+  m_EditorClassIdentifier: 
+  guid: 43a500991eeb1d941b732278db4eb9c9
+  position: {x: 348, y: 133}
+  isFirstNode: 0
+  nodeType: 2
+  animationGroup: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
+  readerName:
+    text: "\uAE40\uB3D9\uB960"
+    parsedText: "\uAE40\uB3D9\uB960"
+    tagAnimations: []
+  contentName:
+    text: "\uC5B4\uB9B0 \uAC83 \uBCF4\uB2E4 \uB354 \uC88B\uC740 \uAC83\uC740<stop>
+      \uB354 \uC5B4\uB9B0 \uAC83"
+    parsedText: "\uC5B4\uB9B0 \uAC83 \uBCF4\uB2E4 \uB354 \uC88B\uC740 \uAC83\uC740
+      \uB354 \uC5B4\uB9B0 \uAC83"
+    tagAnimations:
+    - rid: 4199951018904256592
+  textOutputMethod: {fileID: 11400000, guid: 7084b70665056c8488f2b9ace5a4d881, type: 2}
+  linkedNode: {fileID: -7742855683117034324}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4199951018904256592
+      type: {class: DialogStopTag, ns: Dialog.Tag, asm: Assembly-CSharp}
+      data:
+        startIndex: 15
+        endIndex: 15
+        calcurateEndIndex: 0
+        tag: stop
+        isStoppingWithTimer: 1
+        stoppingTime: 2
+--- !u!114 &6024474461970530358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae87230921f86bd48b0751b6442b98eb, type: 3}
+  m_Name: VisualNovelNodeSO
+  m_EditorClassIdentifier: 
+  guid: 63d15cf6304713b438217e1dc1851b47
+  position: {x: 60.662228, y: 133.00002}
+  isFirstNode: 1
+  nodeType: 2
+  animationGroup: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
+  readerName:
+    text: "<rainbow>\uAE40\uB3D9\uB960"
+    parsedText: "\uAE40\uB3D9\uB960"
+    tagAnimations:
+    - rid: 4199951018904256591
+  contentName:
+    text: "\uB098\uB294\uC57C \uC5B4\uB9B0\uC774 \uC0AC\uB791\uAFBC"
+    parsedText: "\uB098\uB294\uC57C \uC5B4\uB9B0\uC774 \uC0AC\uB791\uAFBC"
+    tagAnimations: []
+  textOutputMethod: {fileID: 11400000, guid: c5b80e1ce6d66154f8479472a7579233, type: 2}
+  linkedNode: {fileID: 3071739612222912499}
+  references:
+    version: 2
+    RefIds:
+    - rid: 4199951018904256591
+      type: {class: RainbowAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
+      data:
+        startIndex: 0
+        endIndex: 3
+        calcurateEndIndex: 1
+        tag: rainbow
+        gradient:
+          serializedVersion: 2
+          key0: {r: 1, g: 0, b: 0, a: 1}
+          key1: {r: 0.90588236, g: 0.85143435, b: 0, a: 1}
+          key2: {r: 0.020166544, g: 0.42556217, b: 1, a: 0}
+          key3: {r: 0.62919617, g: 0, b: 1, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 0
+          ctime1: 18890
+          ctime2: 48862
+          ctime3: 65535
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 65535
+          atime2: 0
+          atime3: 0
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_ColorSpace: -1
+          m_NumColorKeys: 4
+          m_NumAlphaKeys: 2

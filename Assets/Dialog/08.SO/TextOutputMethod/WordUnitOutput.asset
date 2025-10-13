@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: WordUnitOutput
   m_EditorClassIdentifier: 
   characterDelay: 0.05
-  wordDelay: 0.4
+  wordDelay: 0.3

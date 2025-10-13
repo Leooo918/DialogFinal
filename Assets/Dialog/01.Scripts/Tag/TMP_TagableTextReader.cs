@@ -44,11 +44,11 @@ namespace Dialog.Tag
         //For Debugging
         private void Update()
         {
-            if(Keyboard.current.lKey.wasPressedThisFrame)
+            if (Keyboard.current.lKey.wasPressedThisFrame)
             {
                 SetText(_debugText);
             }
-            if(Keyboard.current.kKey.wasPressedThisFrame)
+            if (Keyboard.current.kKey.wasPressedThisFrame)
             {
                 EnableAllText();
             }
@@ -65,17 +65,40 @@ namespace Dialog.Tag
         {
             if (_isTextInit == false) return;
 
+            foreach (var data in _characterDatas)
+            {
+                if(data.isVisible) 
+                    data.timer += Time.deltaTime;
+            }
+
             //애니메이션을 CharcterInfo에 적용
             _textAnimInfos.ForEach(animation =>
             {
-                for (int i = animation.startIndex; i < animation.endIndex; i++)
+                if (animation.calcurateEndIndex)
                 {
-                    var characterInfo = _tmpTextInfo.characterInfo[i];
-                    if (characterInfo.isVisible == false) continue;
+                    for (int i = animation.startIndex; i < animation.endIndex; i++)
+                    {
+                        var characterInfo = _tmpTextInfo.characterInfo[i];
+                        if (characterInfo.isVisible == false) continue;
 
-                    _characterDatas[i].timer += Time.deltaTime;
-                    animation.ApplyEffort(_characterDatas[i]);
+                        animation.ApplyEffort(_characterDatas[i]);
+                    }
                 }
+                else
+                {
+                    int index = animation.startIndex;
+
+                    if (index > 0)
+                    {
+                        if (_characterDatas[index - 1].isVisible == false) return;
+                        animation.ApplyEffort(_characterDatas[index - 1]);
+                    }
+                    else
+                    {
+                        animation.ApplyEffort(_characterDatas[0]);
+                    }
+                }
+
             });
 
             Vector3[] vertices = new Vector3[_tmpTextInfo.meshInfo[0].vertices.Length];
@@ -135,9 +158,23 @@ namespace Dialog.Tag
             }
         }
 
+        public void StopReadText(float time = -1)
+        {
+            if (time < 0) _currentTextOutputMethod.SetStopTextOutput(true);
+            else StartCoroutine(StopReadingTextRoutine(time));
+        }
+
         public void SkipReadingText()
         {
             EnableAllText();
+            _currentTextOutputMethod.OnCompleteReading?.Invoke();
+        }
+
+        private IEnumerator StopReadingTextRoutine(float time)
+        {
+            _currentTextOutputMethod.SetStopTextOutput(true);
+            yield return new WaitForSecondsRealtime(time);
+            _currentTextOutputMethod.SetStopTextOutput(false);
         }
 
 
@@ -197,11 +234,13 @@ namespace Dialog.Tag
                 _characterDatas.Add(data);
             }
 
-            //_textAnimInfos.ForEach(animation =>
-            //{
-            //    //if(animation is IGameFlowTag gameFlow)
-            //    //    gameFlow.SetData();
-            //});
+            _textAnimInfos.ForEach(animation =>
+            {
+                if (animation is IGameFlowTag gameFlow)
+                    gameFlow.SetData(this);
+                if (animation is EventTextTag eventText)
+                    eventText.Initialize();
+            });
 
             _isTextInit = true;
         }
@@ -216,7 +255,7 @@ namespace Dialog.Tag
             _tmp.maxVisibleCharacters = 0;
             _characterDatas?.ForEach(data =>
             {
-                if (data.isContainVertex == false) return;
+                //if (data.isContainVertex == false) return;
                 data.isVisible = false;
             });
         }
@@ -226,14 +265,16 @@ namespace Dialog.Tag
             if (_tmp.maxVisibleCharacters >= textLength) return;
 
             CharacterData data = _characterDatas[_tmp.maxVisibleCharacters++];
-            if (data.isContainVertex) data.isVisible = true;
+            data.isVisible = true;
         }
 
         public void EnableAllText()
         {
-            for(int i = 0; i < _characterDatas.Count; ++i)
+            _isReadingText = false;
+            _tmp.maxVisibleCharacters = _characterDatas.Count;
+            for (int i = 0; i < _characterDatas.Count; ++i)
             {
-                if (_characterDatas[i].isContainVertex == false) continue;
+                //if (_characterDatas[i].isContainVertex == false) continue;
                 _characterDatas[i].isVisible = true;
             }
         }

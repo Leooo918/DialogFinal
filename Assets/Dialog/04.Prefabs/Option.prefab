@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6609089548471250582}
   - component: {fileID: 7306544507108093402}
   - component: {fileID: 7205511278891341859}
-  - component: {fileID: 5880692690442152285}
+  - component: {fileID: 3313419977130158284}
   m_Layer: 5
   m_Name: Txt
   m_TagString: Untagged
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &5880692690442152285
+--- !u!114 &3313419977130158284
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,11 +146,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 233618614245783076}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c878ca21a2101b44d9619103e4eefe7b, type: 3}
+  m_Script: {fileID: 11500000, guid: e333c31beb43c56429a6899562a88075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationGruop: {fileID: 11400000, guid: 8754d0825aba0f24b8cd4b723df7bd58, type: 2}
-  _debugText: 
+  _animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
+  _debugText:
+    text: 
+    parsedText: 
+    tagAnimations: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1717715775932654820
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +344,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &-2199068703474868929
 MonoBehaviour:
@@ -352,4 +358,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6904f517cc2da4ca420554caedd1ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tmp: {fileID: 5880692690442152285}
+  _tmp: {fileID: 3313419977130158284}

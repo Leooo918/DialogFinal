@@ -1,7 +1,6 @@
 using Dialog.Tag;
 using System;
 using System.Collections;
-using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -59,13 +58,13 @@ namespace Dialog
             yield return null;
             animationPlayer.DisableText();
             node.textOutputMethod.OnCompleteReading += OnCompleteRead;
-            _currentActor?.personalTalkBubble.ContentTextMeshPro.StartReading(node.textOutputMethod);
+            animationPlayer.StartReading(node.textOutputMethod);
             _nextNode = node.linkedNode;
         }
 
         private void OnCompleteRead()
         {
-            if(_curReadingNode is IngameNodeSO ingame) ingame.textOutputMethod.OnCompleteReading -= OnCompleteRead;
+            if (_curReadingNode is IngameNodeSO ingame) ingame.textOutputMethod.OnCompleteReading -= OnCompleteRead;
             StartCoroutine(WaitNodeRoutine(() => _isInputDetected, _currentActor.OnCompleteNode));
         }
 
@@ -80,10 +79,10 @@ namespace Dialog
         {
             _optionTalk = _curReadingNode as OptionNodeSO;
             IngameNodeSO nodeInstance = ScriptableObject.CreateInstance<IngameNodeSO>();
-            nodeInstance.animationGruop = Dialog.animGroup;
+            nodeInstance.animationGroup = Dialog.animGroup;
             nodeInstance.SetNormalNodeByOption(option, Dialog.defaultPlayerActor);
             _curReadingNode = nodeInstance;
-            
+
             ReadSingleLine();
         }
 
@@ -96,12 +95,12 @@ namespace Dialog
 
         private IEnumerator WaitNodeRoutine(Func<bool> waitPredict, Action endAction)
         {
+            _isReadingDialog = false;
             yield return new WaitForSeconds(0.1f);
             yield return new WaitUntil(waitPredict);
 
             endAction?.Invoke();
             _curReadingNode = _nextNode;
-            _isReadingDialog = false;
 
             if (_optionTalk)
             {
@@ -112,6 +111,16 @@ namespace Dialog
             yield return null;
             stopReading = false;
             ReadSingleLine();
+        }
+
+        protected override void SkipReading()
+        {
+            if(_isReadingDialog)
+            {
+                _isReadingDialog = false;
+                StopCoroutine(_readingNodeRoutine);
+                _currentActor.ContentText.SkipReadingText();
+            }
         }
 
         #endregion

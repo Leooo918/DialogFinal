@@ -1,59 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7730358341324731563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cf12593a4a5d8247bdea87308ca2eb6, type: 3}
-  m_Name: OptionNodeSO
-  m_EditorClassIdentifier: 
-  guid: c98667d09bb534e40a8b2723d06f44df
-  position: {x: 526.5, y: 144}
-  isFirstNode: 0
-  nodeType: 4
-  animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
-  animationGroup: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
-  options:
-  - optionTxt:
-      text: "<shake>\uC548\uB155\uD558\uC138\uC694"
-      parsedText: "\uC548\uB155\uD558\uC138\uC694"
-      tagAnimations:
-      - rid: 1995755942420938843
-    textOutputMethod: {fileID: 11400000, guid: c5b80e1ce6d66154f8479472a7579233, type: 2}
-    nextNode: {fileID: -6515531102020398469}
-  - optionTxt:
-      text: "<shake>\uBC18\uAC11\uC18C"
-      parsedText: "\uBC18\uAC11\uC18C"
-      tagAnimations:
-      - rid: 1995755942420938844
-    textOutputMethod: {fileID: 11400000, guid: c5b80e1ce6d66154f8479472a7579233, type: 2}
-    nextNode: {fileID: -2608778897836740989}
-  optionPrefab: {fileID: -2199068703474868929, guid: f96be568de8eb164d8af3c30b3c615e7, type: 3}
-  references:
-    version: 2
-    RefIds:
-    - rid: 1995755942420938843
-      type: {class: ShakeAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
-      data:
-        startIndex: 0
-        endIndex: 5
-        calcurateEndIndex: 1
-        tag: shake
-        power: 2
-    - rid: 1995755942420938844
-      type: {class: ShakeAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
-      data:
-        startIndex: 0
-        endIndex: 3
-        calcurateEndIndex: 1
-        tag: shake
-        power: 2
---- !u!114 &-6515531102020398469
+--- !u!114 &-464135438169005644
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,98 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7870a4eed172848bd52da19d69a590, type: 3}
   m_Name: IngameNodeSO
   m_EditorClassIdentifier: 
-  guid: 658eadadc9e868543a51e07b5f70b40b
-  position: {x: 781, y: 53.33875}
-  isFirstNode: 0
-  nodeType: 1
-  animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
-  reader: {fileID: 11400000, guid: 24df2bcdafcd9dc429b1429e3e0a8fbc, type: 2}
-  text:
-    text: "<size>\uC548\uB155?!"
-    parsedText: "\uC548\uB155?!"
-    tagAnimations:
-    - rid: 1995755942420938845
-  textOutputMethod: {fileID: 11400000, guid: c5b80e1ce6d66154f8479472a7579233, type: 2}
-  linkedNode: {fileID: 0}
-  references:
-    version: 2
-    RefIds:
-    - rid: 1995755942420938845
-      type: {class: SizeAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
-      data:
-        startIndex: 0
-        endIndex: 4
-        calcurateEndIndex: 1
-        tag: size
-        duration: 0.2
-        amplitude: -1
---- !u!114 &-2608778897836740989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e7870a4eed172848bd52da19d69a590, type: 3}
-  m_Name: IngameNodeSO
-  m_EditorClassIdentifier: 
-  guid: b094ec729e4ca8448b36b350b3cc40c7
-  position: {x: 781, y: 155.5}
-  isFirstNode: 0
-  nodeType: 1
-  animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
-  reader: {fileID: 11400000, guid: 24df2bcdafcd9dc429b1429e3e0a8fbc, type: 2}
-  text:
-    text: "<size>\uBC18\uAC11\uC18C\uB294 \uC5B4\uB5A4'\uC18C'\uC778\uAC00"
-    parsedText: "\uBC18\uAC11\uC18C\uB294 \uC5B4\uB5A4'\uC18C'\uC778\uAC00"
-    tagAnimations:
-    - rid: 1995755942420938842
-  textOutputMethod: {fileID: 11400000, guid: c5b80e1ce6d66154f8479472a7579233, type: 2}
-  linkedNode: {fileID: 0}
-  references:
-    version: 2
-    RefIds:
-    - rid: 1995755942420938842
-      type: {class: SizeAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
-      data:
-        startIndex: 0
-        endIndex: 12
-        calcurateEndIndex: 1
-        tag: size
-        duration: 0.2
-        amplitude: -1
---- !u!114 &-160401781727346583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e7870a4eed172848bd52da19d69a590, type: 3}
-  m_Name: IngameNodeSO
-  m_EditorClassIdentifier: 
-  guid: 787f419d960e8f848ae3e976b1c56072
-  position: {x: -31.559998, y: 144}
+  guid: 679d359fb89a5264c9a08134d699f143
+  position: {x: -39, y: 288}
   isFirstNode: 1
   nodeType: 1
-  animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
+  animationGroup: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
   reader: {fileID: 11400000, guid: 096a0d56132461f4ba048bdc974149d7, type: 2}
   text:
-    text: "<size><rainbow>\uD754\uB4E4\uC5B4~ \uD754\uB4E4\uC5B4!"
+    text: "<rainbow>\uD754\uB4E4\uC5B4~ <stop>\uD754\uB4E4\uC5B4!"
     parsedText: "\uD754\uB4E4\uC5B4~ \uD754\uB4E4\uC5B4!"
     tagAnimations:
-    - rid: 1995756017117560936
-    - rid: 1995756017117560937
+    - rid: 4199951084630573136
+    - rid: 4199951012155097168
   textOutputMethod: {fileID: 11400000, guid: c5b80e1ce6d66154f8479472a7579233, type: 2}
-  linkedNode: {fileID: 8853913747068004852}
+  linkedNode: {fileID: 8259483817450863184}
   references:
     version: 2
     RefIds:
-    - rid: 1995756017117560936
+    - rid: 4199951012155097168
       type: {class: RainbowAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
       data:
         startIndex: 0
@@ -193,15 +66,15 @@ MonoBehaviour:
           m_ColorSpace: -1
           m_NumColorKeys: 4
           m_NumAlphaKeys: 2
-    - rid: 1995756017117560937
-      type: {class: SizeAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
+    - rid: 4199951084630573136
+      type: {class: DialogStopTag, ns: Dialog.Tag, asm: Assembly-CSharp}
       data:
-        startIndex: 0
-        endIndex: 9
-        calcurateEndIndex: 1
-        tag: size
-        duration: 0.2
-        amplitude: -1
+        startIndex: 5
+        endIndex: 5
+        calcurateEndIndex: 0
+        tag: stop
+        isStoppingWithTimer: 1
+        stoppingTime: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,12 +91,9 @@ MonoBehaviour:
   animGroup: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
   defaultPlayerActor: {fileID: 11400000, guid: 096a0d56132461f4ba048bdc974149d7, type: 2}
   nodes:
-  - {fileID: -160401781727346583}
-  - {fileID: 8853913747068004852}
-  - {fileID: -7730358341324731563}
-  - {fileID: -2608778897836740989}
-  - {fileID: -6515531102020398469}
---- !u!114 &8853913747068004852
+  - {fileID: -464135438169005644}
+  - {fileID: 8259483817450863184}
+--- !u!114 &8259483817450863184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,28 +105,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e7870a4eed172848bd52da19d69a590, type: 3}
   m_Name: IngameNodeSO
   m_EditorClassIdentifier: 
-  guid: 4e944d71e3634894782802f27e14d2e7
-  position: {x: 233, y: 144}
+  guid: 129e2ff579787f9458e8e93f54a87daa
+  position: {x: 214.5, y: 288}
   isFirstNode: 0
   nodeType: 1
-  animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
+  animationGroup: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
   reader: {fileID: 11400000, guid: 24df2bcdafcd9dc429b1429e3e0a8fbc, type: 2}
   text:
-    text: "<wobble>\uC544\uBB34 \uB9D0\uD558\uAE30 \uC9C4\uC9DC \uC544\uBB34 \uB9D0 "
-    parsedText: "\uC544\uBB34 \uB9D0\uD558\uAE30 \uC9C4\uC9DC \uC544\uBB34 \uB9D0 "
+    text: "<wobble>\uC544\uBB34 \uB9D0\uD558\uAE30 <cs>\uC9C4\uC9DC <cs>\uC544\uBB34
+      <cs>\uB9D0 \n"
+    parsedText: "\uC544\uBB34 \uB9D0\uD558\uAE30 \uC9C4\uC9DC \uC544\uBB34 \uB9D0
+      \n"
     tagAnimations:
-    - rid: 1995756017117560920
+    - rid: 4199951012155097170
+    - rid: 4199951012155097171
+    - rid: 4199951012155097172
+    - rid: 4199951084630573135
   textOutputMethod: {fileID: 11400000, guid: 7084b70665056c8488f2b9ace5a4d881, type: 2}
-  linkedNode: {fileID: -7730358341324731563}
+  linkedNode: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 1995756017117560920
+    - rid: 4199951012155097170
+      type: {class: CameraShakeEvent, ns: Dialog.Tag, asm: Assembly-CSharp}
+      data:
+        startIndex: 13
+        endIndex: 13
+        calcurateEndIndex: 0
+        tag: cs
+        shakePower: 10
+        shakeDuration: 0.2
+    - rid: 4199951012155097171
+      type: {class: CameraShakeEvent, ns: Dialog.Tag, asm: Assembly-CSharp}
+      data:
+        startIndex: 10
+        endIndex: 10
+        calcurateEndIndex: 0
+        tag: cs
+        shakePower: 10
+        shakeDuration: 0.2
+    - rid: 4199951012155097172
+      type: {class: CameraShakeEvent, ns: Dialog.Tag, asm: Assembly-CSharp}
+      data:
+        startIndex: 7
+        endIndex: 7
+        calcurateEndIndex: 0
+        tag: cs
+        shakePower: 10
+        shakeDuration: 0.2
+    - rid: 4199951084630573135
       type: {class: WobbleAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
       data:
         startIndex: 0
-        endIndex: 15
+        endIndex: 16
         calcurateEndIndex: 1
         tag: wobble
         power: 10
-        speed: 5
+        speed: 10

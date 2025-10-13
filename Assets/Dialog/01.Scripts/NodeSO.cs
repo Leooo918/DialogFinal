@@ -10,7 +10,7 @@ namespace Dialog
         [HideInInspector] public Vector2 position;
         [ReadOnly] public bool isFirstNode;
         [ReadOnly] public DialogNodeType nodeType;
-        [ReadOnly] public TextTagGroupSO animationGruop;
+        [ReadOnly] public TextTagGroupSO animationGroup;
         public Action<NodeSO> OnSetAsFirstNode;
 
 

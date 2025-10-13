@@ -4,6 +4,6 @@ namespace Dialog.Tag
 {
     public interface IGameFlowTag
     {
-        public void SetData(DialogPlayer player);
+        public void SetData(TMP_TagableTextReader player);
     }
 }

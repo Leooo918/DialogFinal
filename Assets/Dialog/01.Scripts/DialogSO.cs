@@ -24,7 +24,7 @@ namespace Dialog
             NodeSO node = ScriptableObject.CreateInstance(type) as NodeSO;
             node.name = type.Name;
             node.guid = GUID.Generate().ToString();
-            node.animationGruop = animGroup;
+            node.animationGroup = animGroup;
             nodes.Add(node);
 
             AssetDatabase.AddObjectToAsset(node, this);
@@ -49,7 +49,8 @@ namespace Dialog
 
             if (parent is VisualNovelNodeSO visualNovel)
             {
-                
+                visualNovel.linkedNode = nextNode;
+                return;
             }
 
             if (parent is OptionNodeSO option)
@@ -75,7 +76,8 @@ namespace Dialog
 
             if (parent is VisualNovelNodeSO visualNovel)
             {
-
+                visualNovel.linkedNode = null;
+                return;
             }
 
             if (parent is OptionNodeSO option)
@@ -101,7 +103,7 @@ namespace Dialog
 
             if(node is VisualNovelNodeSO visualNovel)
             {
-
+                children.Add(visualNovel.linkedNode);
             }
 
             if (node is OptionNodeSO option)

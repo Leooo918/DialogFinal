@@ -15,7 +15,7 @@ namespace Dialog
 
 
         public override void OnEnable() { nodeType = DialogNodeType.IngameMode; }
-        private void OnValidate() { text?.ParseTag(animationGruop); }
+        private void OnValidate() { text?.ParseTag(animationGroup); }
 
         public void SetNormalNodeByOption(Option option, ActorSO defaultPlayerActor)
         {
@@ -25,7 +25,7 @@ namespace Dialog
             text = new TagableText(option.optionTxt.GetFullText());
             linkedNode = option.nextNode;
 
-            text.ParseTag(animationGruop);
+            text.ParseTag(animationGroup);
         }
 
         #region Data Getter
