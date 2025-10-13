@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fc64999f59c6c440be83bf7ad609f02, type: 3}
   m_Name: SingleTextOutput
   m_EditorClassIdentifier: 
-  delay: 0.05
+  delay: 0.1

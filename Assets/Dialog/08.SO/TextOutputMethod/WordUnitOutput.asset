@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2f33bec77da5d47b5d5f41e83e0c34, type: 3}
   m_Name: WordUnitOutput
   m_EditorClassIdentifier: 
-  characterDelay: 0.05
+  characterDelay: 0.1
   wordDelay: 0.3
