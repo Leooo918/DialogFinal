@@ -12,7 +12,6 @@ namespace Dialog.Tag
     {
         public event Action onCompleteReadLine;
         [SerializeField] private TextTagGroupSO _animationGruop;
-        [SerializeField] private TagableText _debugText;
 
         private TextMeshProUGUI _tmp;
         private TMP_TextInfo _tmpTextInfo;
@@ -34,26 +33,6 @@ namespace Dialog.Tag
             _tmp = GetComponent<TextMeshProUGUI>();
             _tmpTextInfo = _tmp.textInfo;
         }
-
-        //For Debugging
-        private void OnValidate()
-        {
-            _debugText?.ParseTag(_animationGruop);
-        }
-
-        //For Debugging
-        private void Update()
-        {
-            if (Keyboard.current.lKey.wasPressedThisFrame)
-            {
-                SetText(_debugText);
-            }
-            if (Keyboard.current.kKey.wasPressedThisFrame)
-            {
-                EnableAllText();
-            }
-        }
-
 
         private void LateUpdate()
         {
@@ -136,14 +115,14 @@ namespace Dialog.Tag
             }
         }
 
-        public char GetText(int index) => _text[index];
-
         #region TextReading
 
         public void StartReading(TextOutputMethodSO textOutput)
         {
             _isReadingText = true;
             _currentTextOutputMethod = textOutput;
+            _currentTextOutputMethod.Initialize();
+            _currentTextOutputMethod.SetStopTextOutput(false);
             _currentTextOutputMethod.OnReadText += EnableSingleText;
         }
 
@@ -271,7 +250,10 @@ namespace Dialog.Tag
         public void EnableAllText()
         {
             _isReadingText = false;
+            _currentTextOutputMethod.OnReadText -= EnableSingleText;
             _tmp.maxVisibleCharacters = _characterDatas.Count;
+            _currentTextOutputMethod.SetStopTextOutput(false);
+
             for (int i = 0; i < _characterDatas.Count; ++i)
             {
                 //if (_characterDatas[i].isContainVertex == false) continue;

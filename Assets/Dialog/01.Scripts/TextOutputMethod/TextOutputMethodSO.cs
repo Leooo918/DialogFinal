@@ -12,6 +12,15 @@ namespace Dialog
         protected float _stopTime;
         protected bool _isStoppedTextOutput;
 
+        public virtual void Initialize()
+        {
+            _isStoppedTextOutput = false;
+            _prevTextReadTime = 0;
+            _stopTime = 0;
+
+            OnReadText = null;
+        }
+
         public void SetStopTextOutput(bool isStop)
         {
             if (isStop)

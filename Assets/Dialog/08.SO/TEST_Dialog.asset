@@ -19,62 +19,23 @@ MonoBehaviour:
   animationGroup: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
   reader: {fileID: 11400000, guid: 096a0d56132461f4ba048bdc974149d7, type: 2}
   text:
-    text: "<rainbow>\uD754\uB4E4\uC5B4~ <stop>\uD754\uB4E4\uC5B4!"
+    text: "<shake>\uD754\uB4E4\uC5B4~ \uD754\uB4E4\uC5B4!"
     parsedText: "\uD754\uB4E4\uC5B4~ \uD754\uB4E4\uC5B4!"
     tagAnimations:
-    - rid: 4199951084630573136
-    - rid: 4199951012155097168
+    - rid: 4199951122081251406
   textOutputMethod: {fileID: 11400000, guid: c5b80e1ce6d66154f8479472a7579233, type: 2}
   linkedNode: {fileID: 8259483817450863184}
   references:
     version: 2
     RefIds:
-    - rid: 4199951012155097168
-      type: {class: RainbowAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
+    - rid: 4199951122081251406
+      type: {class: ShakeAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
       data:
         startIndex: 0
         endIndex: 9
         calcurateEndIndex: 1
-        tag: rainbow
-        gradient:
-          serializedVersion: 2
-          key0: {r: 1, g: 0, b: 0, a: 1}
-          key1: {r: 0.90588236, g: 0.85143435, b: 0, a: 1}
-          key2: {r: 0.020166544, g: 0.42556217, b: 1, a: 0}
-          key3: {r: 0.62919617, g: 0, b: 1, a: 0}
-          key4: {r: 0, g: 0, b: 0, a: 0}
-          key5: {r: 0, g: 0, b: 0, a: 0}
-          key6: {r: 0, g: 0, b: 0, a: 0}
-          key7: {r: 0, g: 0, b: 0, a: 0}
-          ctime0: 0
-          ctime1: 18890
-          ctime2: 48862
-          ctime3: 65535
-          ctime4: 0
-          ctime5: 0
-          ctime6: 0
-          ctime7: 0
-          atime0: 0
-          atime1: 65535
-          atime2: 0
-          atime3: 0
-          atime4: 0
-          atime5: 0
-          atime6: 0
-          atime7: 0
-          m_Mode: 0
-          m_ColorSpace: -1
-          m_NumColorKeys: 4
-          m_NumAlphaKeys: 2
-    - rid: 4199951084630573136
-      type: {class: DialogStopTag, ns: Dialog.Tag, asm: Assembly-CSharp}
-      data:
-        startIndex: 5
-        endIndex: 5
-        calcurateEndIndex: 0
-        tag: stop
-        isStoppingWithTimer: 1
-        stoppingTime: 2
+        tag: shake
+        power: 10
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +82,7 @@ MonoBehaviour:
     - rid: 4199951012155097171
     - rid: 4199951012155097172
     - rid: 4199951084630573135
-  textOutputMethod: {fileID: 11400000, guid: 7084b70665056c8488f2b9ace5a4d881, type: 2}
+  textOutputMethod: {fileID: 11400000, guid: cf593c2ee1635754092708475eb6e48a, type: 2}
   linkedNode: {fileID: 0}
   references:
     version: 2

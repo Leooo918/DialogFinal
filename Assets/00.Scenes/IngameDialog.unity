@@ -837,13 +837,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
-  _debugText:
-    text: 
-    parsedText: 
-    tagAnimations: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1001 &1146214687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1699,31 +1692,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationGruop: {fileID: 11400000, guid: 82be4bfa04b874f4fa55d1c2298eea4f, type: 2}
-  _debugText:
-    text: "<shake>\uBC0D<shake>"
-    parsedText: "\uBC0D"
-    tagAnimations:
-    - rid: 1995756131424927744
-    - rid: 1995756131424927745
-  references:
-    version: 2
-    RefIds:
-    - rid: 1995756131424927744
-      type: {class: ShakeAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
-      data:
-        startIndex: 1
-        endIndex: 1
-        calcurateEndIndex: 1
-        tag: shake
-        power: 5
-    - rid: 1995756131424927745
-      type: {class: ShakeAnimation, ns: Dialog.Tag, asm: Assembly-CSharp}
-      data:
-        startIndex: 0
-        endIndex: 1
-        calcurateEndIndex: 1
-        tag: shake
-        power: 5
 --- !u!1 &1966073210
 GameObject:
   m_ObjectHideFlags: 0

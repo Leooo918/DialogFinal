@@ -25,7 +25,6 @@ namespace Dialog.Events.Cinemachine
 
         public void ShakeCamera(float power, float duration)
         {
-            Debug.Log("¤±¤¤¤·¤©");
             if (_cameraShakeRoutine != null) StopCoroutine(_cameraShakeRoutine);
             _cameraShakeRoutine = StartCoroutine(StartShake(power, duration));
         }
