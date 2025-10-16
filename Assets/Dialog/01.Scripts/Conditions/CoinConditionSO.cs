@@ -5,10 +5,10 @@ using UnityEngine;
 namespace Dialog
 {
     [CreateAssetMenu(menuName = "SO/Dialog/Condition/CoinCondition")]
-    public class CoinCondition : ConditionSO
+    public class CoinConditionSO : ConditionSO
     {
-        [Header("더 적으면 False, 더 많거나 같으면 True")]
         public int coinLess;
+        //if coin is bigger than this value return true or return false
 
         public override bool Decision() => true;
     }
